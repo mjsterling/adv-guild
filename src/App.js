@@ -23,11 +23,9 @@ const setbonuses = [
 ];
 
 const monsters = [
-  //tier 0
-  [
-    { id: "m0", name: "Aluminium Golem", atk: 3, aspd: 800, chp: 30, mhp: 30 },
+    { id: "m0", name: "Aluminium Golem", atk: 3, aspd: 800, chp: 10, mhp: 10 },
     { id: "w0", name: "Balsa Treant", atk: 3, aspd: 2500, chp: 20, mhp: 20 },
-  ],
+    { id: "f0", name: "Sentient Jute", atk: 3, aspd: 2500, chp: 20, mhp: 20 },
 ];
 
 //list of classes and their stats?
@@ -95,42 +93,42 @@ class Fight extends React.Component {
       },
       monster: {
         id: null,
-        name: null,
+        name: "Select Enemy",
         atk: null,
         aspd: null,
-        chp: null,
-        mhp: null,
+        chp: 0,
+        mhp: 0,
       },
       monsterMenu: false,
-      fighting: false,
-      fightprimer: false,
     };
   }
 
   monsterMenu() {
-    let monsters0 = new Array(monsters[0].length);
-    for (let i = 0; i < monsters0.length; i++) {
-      monsters0[i] = this.renderMonster(i);
+    let xmonsters = Array(monsters.length);
+    for (let i = 0; i < xmonsters.length; i++) {
+      xmonsters[i] = this.renderMonster(i);
+      console.log(xmonsters);
+    }
       return (
         <div className="monstermenu">
-          <ol>{monsters0}</ol>
+          <ol>{xmonsters}</ol>
         </div>
       );
-    }
   }
 
   renderMonster(i) {
+    console.log("i: ", i, ", monster: ", monsters[i])
     return (
       <Monsterbtn
         key={i}
         onClick={() => this.selectMonster(i)}
-        value={monsters[0][i].name}
+        value={monsters[i].name}
       />
     );
   }
 
   selectMonster(i) {
-    let monster = monsters[0][i];
+    let monster = {...monsters[i]};
     this.setState(
       {
         monster: monster,
@@ -144,7 +142,7 @@ class Fight extends React.Component {
     const heroatk = setInterval(() => {
       let monsterc = {...this.state.monster};
       monsterc.chp = monsterc.chp - this.state.hero.atk;
-      if (this.state.monster.chp <= 0) {
+      if (this.state.monster.chp < 1) {
       clearInterval(heroatk);
       clearInterval(monsteratk);
       console.log("monster is dead");
@@ -157,7 +155,7 @@ class Fight extends React.Component {
     const monsteratk = setInterval(() => {
       let heroc = {...this.state.hero};
       heroc.chp = heroc.chp - this.state.monster.atk;
-      if (this.state.hero.chp <= 0) {
+      if (this.state.hero.chp < 1) {
         clearInterval(heroatk);
         clearInterval(monsteratk);
         console.log("hero is dead");
@@ -173,15 +171,7 @@ class Fight extends React.Component {
     const monster = this.state.monster;
     const herohppc = Math.trunc((hero.chp / hero.mhp) * 100);
     const monsterhppc = Math.trunc((monster.chp / monster.mhp) * 100);
-    let monstername;
     let monsterbtn;
-    if (monster.name) {
-      monstername = monster.name;
-      monsterbtn = monster.name;
-    } else {
-      monstername = String.fromCharCode(160);
-      monsterbtn = "Select Enemy";
-    }
 
     let monsterMenu = null;
     const tiersUnlocked = this.props.tiersUnlocked;
@@ -197,7 +187,7 @@ class Fight extends React.Component {
         <div className="herohp">{hero.chp + " / " + hero.mhp}</div>
         <button className="herobtn">Equipment</button>
 
-        <div className="monstername">{monstername}</div>
+        <div className="monstername">{monster.name}</div>
         <div className="hpcontainer">
           <div
             className="monsterhpbar"
@@ -209,7 +199,7 @@ class Fight extends React.Component {
           className="monsterbtn"
           onClick={() => this.setState({ monsterMenu: true })}
         >
-          {monsterbtn}
+          {monster.name}
         </button>
         {monsterMenu}
       </div>
