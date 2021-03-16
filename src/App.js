@@ -2,41 +2,72 @@
 
 import React from "react";
 
-// const items = [
-//   //tier 0 - empty
-//   { id: "w0", name: "Fists", atk: 1, dr: 1, aspd: 1 },
-//   { id: "g0", name: "No Gloves", atk: 0, dr: 1, aspd: 1 },
-//   { id: "h0", name: "No Helmet", atk: 0, dr: 1, aspd: 1 },
-//   { id: "b0", name: "No Armour", atk: 0, dr: 1, aspd: 1 },
-//   { id: "l0", name: "No Legs", atk: 0, dr: 1, aspd: 1 },
-//   //tier 1 - aluminium
-//   { id: "w1", name: "Aluminium Sword", atk: 5, dr: 1, aspd: 0.9 },
-//   { id: "g1", name: "Foil Gloves", atk: 2, dr: 0.95, aspd: 0.95 },
-//   { id: "h1", name: "Foil Helmet", atk: 1, dr: 0.95, aspd: 0.95 },
-//   { id: "b1", name: "Foil Chestplate", atk: 1, dr: 0.95, aspd: 0.95 },
-//   { id: "l1", name: "Foil Platelegs", atk: 1, dr: 0.95, aspd: 0.95 },
-// ];
+const items = [
+  //tier 0 - empty
+  {
+    id: "w0",
+    name: "Fists",
+    atk: 1,
+    dr: 1,
+    aspd: 1,
+    upcost: ["Aluminium", 50],
+  },
+  { id: "g0", name: "No Gloves", atk: 0, dr: 1, aspd: 1, upcost: ["Aluminium", 50], },
+  { id: "h0", name: "No Helmet", atk: 0, dr: 1, aspd: 1, upcost: ["Aluminium", 50], },
+  { id: "b0", name: "No Armour", atk: 0, dr: 1, aspd: 1, upcost: ["Aluminium", 50], },
+  { id: "l0", name: "No Legs", atk: 0, dr: 1, aspd: 1, upcost: ["Aluminium", 50], },
+  //tier 1 - aluminium
+  { id: "w1", name: "Aluminium Sword", atk: 5, dr: 1, aspd: 0.9, upcost: ["Aluminium", 500], },
+  { id: "g1", name: "Foil Gloves", atk: 2, dr: 0.95, aspd: 0.95 },
+  { id: "h1", name: "Foil Helmet", atk: 1, dr: 0.95, aspd: 0.95 },
+  { id: "b1", name: "Foil Chestplate", atk: 1, dr: 0.95, aspd: 0.95 },
+  { id: "l1", name: "Foil Platelegs", atk: 1, dr: 0.95, aspd: 0.95 },
+];
 
 // const setbonuses = [
 //   { id: "t1", name: "Full Aluminium", atk: 10, dr: 0.9, aspd: 0.9 },
 // ];
 
 const monsters = [
-  { id: "m0", name: "Aluminium Golem", atk: 3, aspd: 800, chp: 10, mhp: 10, loot: [
-    { name: "Aluminium", max: 10},
-    { name: "Balsa Wood", max: 3},
-    { name: "Hessian Cloth", max: 3}
-  ] },
-  { id: "w0", name: "Balsa Treant", atk: 3, aspd: 2500, chp: 20, mhp: 20, loot: [
-    { name: "Aluminium", max: 3},
-    { name: "Balsa Wood", max: 10},
-    { name: "Hessian Cloth", max: 3}
-  ] },
-  { id: "f0", name: "Sentient Jute", atk: 3, aspd: 2500, chp: 20, mhp: 20, loot: [
-    { name: "Aluminium", max: 3},
-    { name: "Balsa Wood", max: 3},
-    { name: "Hessian Cloth", max: 10}
-  ] },
+  {
+    id: "m0",
+    name: "Aluminium Golem",
+    atk: 3,
+    aspd: 2000,
+    chp: 10,
+    mhp: 10,
+    loot: [
+      { name: "Aluminium", max: 10 },
+      { name: "Balsa Wood", max: 3 },
+      { name: "Hessian Cloth", max: 3 },
+    ],
+  },
+  {
+    id: "w0",
+    name: "Balsa Treant",
+    atk: 3,
+    aspd: 2000,
+    chp: 10,
+    mhp: 10,
+    loot: [
+      { name: "Aluminium", max: 3 },
+      { name: "Balsa Wood", max: 10 },
+      { name: "Hessian Cloth", max: 3 },
+    ],
+  },
+  {
+    id: "f0",
+    name: "Sentient Jute",
+    atk: 3,
+    aspd: 2000,
+    chp: 10,
+    mhp: 10,
+    loot: [
+      { name: "Aluminium", max: 3 },
+      { name: "Balsa Wood", max: 3 },
+      { name: "Hessian Cloth", max: 10 },
+    ],
+  },
 ];
 
 //list of classes and their stats?
@@ -45,11 +76,12 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.monsterDrop = this.monsterDrop.bind(this);
+    this.buyUpgrade = this.buyUpgrade.bind(this);
     this.state = {
-      inventory: [ 
-        { name: "Aluminium", amount: 0 },
-        { name: "Balsa Wood", amount: 0 },
-        { name: "Hessian Cloth", amount: 0 },
+      inventory: [
+        { name: "Aluminium", amount: 100 },
+        { name: "Balsa Wood", amount: 100 },
+        { name: "Hessian Cloth", amount: 100 },
       ],
       // unlocked ?
       isTierUnlocked: {
@@ -64,6 +96,19 @@ class Game extends React.Component {
       inventorymenu: false,
     };
   }
+
+  // componentDidMount() {
+  //   let inventory = this.state.inventory;
+  //   for (let i = 0; i < inventory.length; i++) {
+  //     let amount = parseInt(localStorage.getItem(inventory[i].name), 10);
+  //     console.log(localStorage.getItem(inventory[i].name));
+  //     console.log(amount);
+  //   }
+  //   console.log(inventory);
+  //   this.setState({
+  //     inventory: inventory,
+  //   });
+  // }
 
   inventoryMenu() {
     let inventorylist = Array(this.state.inventory.length);
@@ -80,19 +125,31 @@ class Game extends React.Component {
   monsterDrop(loot) {
     let inventory = this.state.inventory;
     let drop = Math.floor(Math.random() * loot.length);
-    console.log(drop);
     let inventoryi = this.state.inventory[drop];
-    inventoryi.amount = 1 + inventoryi.amount + Math.floor(Math.random() * loot[drop].max);
+    inventoryi.amount =
+      1 + inventoryi.amount + Math.floor(Math.random() * loot[drop].max);
     inventory.splice(drop, 1, inventoryi);
-    console.log(inventory);
     this.setState({ inventory: inventory });
   }
 
+  buyUpgrade(name, cost) {
+    let inventory = this.state.inventory;
+    let resource = inventory.findIndex((x) => x.name == name);
+    inventory[resource].amount = inventory[resource].amount - cost;
+    this.setState({
+      inventory: inventory,
+    });
+  }
+
   render() {
+    let inventory = this.state.inventory;
     let inventorymenu = null;
     if (this.state.inventorymenu) {
       inventorymenu = this.inventoryMenu();
     }
+    // for (let i = 0; i < inventory.length; i++) {
+    //   localStorage.setItem(inventory[i].name, inventory[i].amount.toString(10));
+    // }
     return (
       <div>
         <div className="container">
@@ -101,6 +158,7 @@ class Game extends React.Component {
             tiersUnlocked={this.state.tiersUnlocked}
             monsterDrop={this.monsterDrop}
             inventory={this.state.inventory}
+            buyUpgrade={this.buyUpgrade}
           />
           {/* <Fight className={hero2} />
           <Fight className={hero3} />
@@ -138,11 +196,7 @@ class Fight extends React.Component {
         aspd: 1000,
         chp: 100,
         mhp: 100,
-        weapon: "w0",
-        gloves: "g0",
-        helmet: "h0",
-        body: "b0",
-        legs: "l0",
+        equipment: ["w0", "g0", "h0", "b0", "l0"],
       },
       monster: {
         id: null,
@@ -154,8 +208,100 @@ class Fight extends React.Component {
         loot: null,
       },
       monsterMenu: false,
+      equipmentMenu: false,
+      equiptooltip: false,
+      equiptooltipid: null,
     };
   }
+
+  render() {
+    const hero = this.state.hero;
+    const monster = this.state.monster;
+    const herohppc = Math.trunc((hero.chp / hero.mhp) * 100);
+    const monsterhppc = Math.trunc((monster.chp / monster.mhp) * 100);
+    let monsterMenu = null;
+    // const tiersUnlocked = this.props.tiersUnlocked;
+    if (this.state.monsterMenu) {
+      monsterMenu = this.monsterMenu();
+    }
+    let equipmentMenu = null;
+    if (this.state.equipmentMenu) {
+      equipmentMenu = this.equipmentMenu();
+    }
+    let equiptooltip = null;
+    if (this.state.equiptooltip) {
+      equiptooltip = this.openequipTooltip();
+    }
+    return (
+      <div className="fight">
+        <div className="heroname">{hero.name}</div>
+        <div className="hpcontainer">
+          <div className="herohpbar" style={{ width: herohppc + "%" }}></div>
+        </div>
+        <div className="herohp">{hero.chp + " / " + hero.mhp}</div>
+        <button
+          className="herobtn"
+          onClick={() =>
+            this.setState({ equipmentMenu: !this.state.equipmentMenu })
+          }
+        >
+          Equipment
+        </button>
+
+        <div className="monstername">{monster.name}</div>
+        <div className="hpcontainer">
+          <div
+            className="monsterhpbar"
+            style={{ width: monsterhppc + "%" }}
+          ></div>
+        </div>
+        <div className="monsterhp">{monster.chp + " / " + monster.mhp}</div>
+        <button
+          className="monsterbtn"
+          onClick={() => this.setState({ monsterMenu: true })}
+        >
+          {monster.name}
+        </button>
+        {monsterMenu}
+        {equipmentMenu}
+        {equiptooltip}
+      </div>
+    );
+  }
+
+  equipTooltip(id) {
+    this.setState({
+      equiptooltip: true,
+      equiptooltipid: id,
+    });
+  }
+
+  openequipTooltip() {
+    let item = this.state.equiptooltipid;
+    return <Equiptooltip item={item} onClick={() => this.upgradeItem(item)} />;
+  }
+
+  upgradeItem(id) {
+    let item = items.find((x) => x.id === id);
+    let resource = this.props.inventory.find(x => x.name == item.upcost[0]).amount;
+    if (this.props.inventory[0].amount >= item.upcost[1]) {
+      let hero = this.state.hero;
+      let equipid = hero.equipment.findIndex(x => x == id);
+      let arrid = item.id.split('');
+      arrid[1] = parseInt(arrid[1], 10);
+      arrid[1]++;
+      let newitemid = arrid.join('');
+      hero.equipment[equipid] = newitemid;
+      console.log(hero);
+      this.setState({
+        hero: hero,
+        equiptooltip: false,
+        equipmentMenu: false,
+      }, () => this.props.buyUpgrade(item.upcost[0], item.upcost[1]));
+
+    }
+  }
+
   //Select Monster onclick
   monsterMenu() {
     let xmonsters = Array(monsters.length);
@@ -200,6 +346,13 @@ class Fight extends React.Component {
         clearInterval(monsteratk);
         console.log("monster is dead");
         this.props.monsterDrop(this.state.monster.loot);
+        monsterc.chp = monsterc.mhp;
+        this.setState(
+          {
+            monster: monsterc,
+          },
+          () => this.fight()
+        );
       }
       this.setState({
         monster: monsterc,
@@ -220,45 +373,46 @@ class Fight extends React.Component {
     }, this.state.monster.aspd);
   }
 
-  render() {
-    const hero = this.state.hero;
-    const monster = this.state.monster;
-    const herohppc = Math.trunc((hero.chp / hero.mhp) * 100);
-    const monsterhppc = Math.trunc((monster.chp / monster.mhp) * 100);
-    let monsterMenu = null;
-    // const tiersUnlocked = this.props.tiersUnlocked;
-    if (this.state.monsterMenu) {
-      monsterMenu = this.monsterMenu();
+  equipmentMenu() {
+    let equipbtns = Array(5);
+    for (let i = 0; i < 5; i++) {
+      equipbtns[i] = this.renderEquipment(i);
     }
-    return (
-      <div className="fight">
-        <div className="heroname">{hero.name}</div>
-        <div className="hpcontainer">
-          <div className="herohpbar" style={{ width: herohppc + "%" }}></div>
-        </div>
-        <div className="herohp">{hero.chp + " / " + hero.mhp}</div>
-        <button className="herobtn">Equipment</button>
+    return <div className="inventorymenu">{equipbtns}</div>;
+  }
 
-        <div className="monstername">{monster.name}</div>
-        <div className="hpcontainer">
-          <div
-            className="monsterhpbar"
-            style={{ width: monsterhppc + "%" }}
-          ></div>
-        </div>
-        <div className="monsterhp">{monster.chp + " / " + monster.mhp}</div>
-        <button
-          className="monsterbtn"
-          onClick={() => this.setState({ monsterMenu: true })}
-        >
-          {monster.name}
-        </button>
-        {monsterMenu}
-      </div>
+  renderEquipment(i) {
+    let item = this.state.hero.equipment[i];
+    return (
+      <Equipment key={i} item={item} onClick={() => this.equipTooltip(item)} />
     );
   }
 }
 
+function Equipment(props) {
+  let itemname = items.find((x) => x.id == props.item).name;
+  console.log(itemname);
+  return <button onClick={props.onClick}>{itemname}</button>;
+}
+
+function Equiptooltip(props) {
+  let item = items.find((x) => x.id == props.item);
+  let stats = Array(5);
+  stats[0] = <li key="0">{item.name}</li>;
+  stats[1] = <li key="1">{"Attack bonus: " + item.atk}</li>;
+  stats[2] = (
+    <li key="2">{"Damage reduction bonus: " + (1 / item.dr) * 100}</li>
+  );
+  stats[3] = <li key="3">{"Attack speed boost: " + (1 / item.aspd) * 100}</li>;
+  stats[4] = (
+    <button key="4" onClick={props.onClick}>
+      {"Upgrade"}
+      <br />
+      {"Cost: " + item.upcost[1] + " " + item.upcost[0]}
+    </button>
+  );
+  return stats;
+}
 //called by renderMonster
 function Monsterbtn(props) {
   return <button onClick={props.onClick}>{props.value}</button>;
