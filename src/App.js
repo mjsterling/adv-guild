@@ -3,41 +3,58 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-//0 item name, 1 attack boost (additive), 2 dmgreduction boost (multiplicative), 3 aspd boost (multiplicative)
-const weapon0 = ["Fists", 1, 1, 1];
-const gloves0 = ["No Gloves", 0, 1, 1];
-const helmet0 = ["No Helmet", 0, 1, 1];
-const body0 = ["No Armour", 0, 1, 1];
-const legs0 = ["No Legs", 0, 1, 1];
-const weapon1 = ["Aluminium Sword", 5, 1, 0.9];
-const gloves1 = ["Foil Gloves", 2, 0.95, 0.95];
-const helmet1 = ["Foil Helmet", 1, 0.95, 0.95];
-const body1 = ["Foil Chestplate", 1, 0.95, 0.95];
-const legs1 = ["Foil Platelegs", 1, 0.95, 0.95];
-//0 set id, 1 attack boost (additive), 2 dmgreduction boost (multiplicative), 3 aspd boost (multiplicative)
-const set1 = ["Full Aluminium", 10, 0.9, 0.9];
-//const arr
-//list of items and their stat bonuses
-//const arr
-//monster name, max hp, attack, aspd
-const tier0monsters = [["Aluminium Golem", 3, 3000, 30, 30]];
-//list of classes and their stats
+const items = [
+  //tier 0 - empty
+  { id: "w0", name: "Fists", atk: 1, dr: 1, aspd: 1 },
+  { id: "g0", name: "No Gloves", atk: 0, dr: 1, aspd: 1 },
+  { id: "h0", name: "No Helmet", atk: 0, dr: 1, aspd: 1 },
+  { id: "b0", name: "No Armour", atk: 0, dr: 1, aspd: 1 },
+  { id: "l0", name: "No Legs", atk: 0, dr: 1, aspd: 1 },
+  //tier 1 - aluminium
+  { id: "w1", name: "Aluminium Sword", atk: 5, dr: 1, aspd: 0.9 },
+  { id: "g1", name: "Foil Gloves", atk: 2, dr: 0.95, aspd: 0.95 },
+  { id: "h1", name: "Foil Helmet", atk: 1, dr: 0.95, aspd: 0.95 },
+  { id: "b1", name: "Foil Chestplate", atk: 1, dr: 0.95, aspd: 0.95 },
+  { id: "l1", name: "Foil Platelegs", atk: 1, dr: 0.95, aspd: 0.95 },
+];
+
+const setbonuses = [
+  { id: "t1", name: "Full Aluminium", atk: 10, dr: 0.9, aspd: 0.9 },
+];
+
+const monsters = [
+  //tier 0
+  [
+    { id: "m0", name: "Aluminium Golem", atk: 3, aspd: 800, chp: 30, mhp: 30 },
+    { id: "w0", name: "Balsa Treant", atk: 3, aspd: 2500, chp: 20, mhp: 20 },
+  ],
+];
+
+//list of classes and their stats?
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
-    //base hero state
     this.state = {
-      //resource name, resource amount
       inventory: [
-        ["Aluminium", 0],
-        ["Balsa Wood", 0],
-        ["Hessian Cloth", 0],
+        { id: "m0", name: "Aluminium", amount: 0 },
+        { id: "w0", name: "Balsa Wood", amount: 0 },
+        { id: "f0", name: "Hessian Cloth", amount: 0 },
       ],
       // unlocked ?
-      tiersUnlocked: [true, false, false, false, false, false],
+      isTierUnlocked: {
+        t0: true,
+        t1: false,
+        t2: false,
+        t3: false,
+        t4: false,
+        t5: false,
+      },
       //settings menu, inventory menu
-      menusOpen: [false, false],
+      menus: {
+        settings: { open: false, sound: true, music: true },
+        inventory: { open: false },
+      },
     };
   }
 
@@ -60,42 +77,38 @@ class Game extends React.Component {
   }
 }
 
-function useFightingState() {
-      const [fighting, setFighting] = useState(false);
-}
-
 class Fight extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hero: [
-        /*0 name*/ "Warrior",
-        /*1 att*/ 1,
-        /*2 aspd*/ 3000,
-        /*3 crnt hp*/ 100,
-        /*4 max hp*/ 100,
-        /*5 weapon*/ weapon0,
-        /*6 gloves*/ gloves0,
-        /*7 helmet*/ helmet0,
-        /*8 body*/ body0,
-        /*9 legs*/ legs0,
-      ],
-      monster: [
-        /*0 m name*/ null,
-        /*1 m att*/ null,
-        /*2 m aspd*/ null,
-        /*3 m crnt hp*/ null,
-        /*4 m max hp*/ null,
-      ],
+      hero: {
+        name: "Warrior",
+        atk: 1,
+        aspd: 1000,
+        chp: 100,
+        mhp: 100,
+        weapon: "w0",
+        gloves: "g0",
+        helmet: "h0",
+        body: "b0",
+        legs: "l0",
+      },
+      monster: {
+        id: null,
+        name: null,
+        atk: null,
+        aspd: null,
+        chp: null,
+        mhp: null,
+      },
       monsterMenu: false,
       fighting: false,
+      fightprimer: false,
     };
   }
 
-
-
   monsterMenu() {
-    let monsters0 = new Array(tier0monsters.length);
+    let monsters0 = new Array(monsters[0].length);
     for (let i = 0; i < monsters0.length; i++) {
       monsters0[i] = this.renderMonster(i);
       return (
@@ -111,75 +124,65 @@ class Fight extends React.Component {
       <Monsterbtn
         key={i}
         onClick={() => this.selectMonster(i)}
-        value={tier0monsters[i][0]}
+        value={monsters[0][i].name}
       />
     );
   }
 
   selectMonster(i) {
-    let monster = tier0monsters[i].slice();
-    this.fight();
-    this.setState({
-      monster: monster,
-      monsterMenu: false,
-    });
+    let monster = monsters[0][i];
+    this.setState(
+      {
+        monster: monster,
+        monsterMenu: false,
+      },
+      () => this.fight()
+    );
   }
 
   fight() {
-    let hero = this.state.hero.slice();
-    let monster = this.state.monster.slice();
-    if (!this.state.fighting) {
-        console.log(hero, monster);
-        let herohp = hero[3];
-        let monsterhp = monster[3];
+    const heroatk = setInterval(() => {
+      let monsterc = {...this.state.monster};
+      monsterc.chp = monsterc.chp - this.state.hero.atk;
+      if (this.state.monster.chp <= 0) {
+      clearInterval(heroatk);
+      clearInterval(monsteratk);
+      console.log("monster is dead");
+    }
+    this.setState ({
+      monster: monsterc,
+    });
+    }, this.state.hero.aspd);
 
-        const heroatk = setInterval(() => {
-        monsterhp = monsterhp - hero[1];
-        }, hero[2]);
-
-        const monsteratk = setInterval(() => {
-        herohp = herohp - monster[1];
-        }, monster[2]);
-
-        const updatefunc = setInterval(() => {
-        hero[3] = herohp;
-        monster[3] = monsterhp;
-        if (herohp <= 0 || monsterhp <= 0) {
-            clearInterval(heroatk);
-            clearInterval(monsteratk);
-            clearInterval(updatefunc);
-            monster = [null, null, null, null, null];
-            this.setState({
-            hero: hero,
-            monster: monster,
-            fighting: false,
-            });
-        } else {
-            this.setState({
-            hero: hero,
-            monster: monster,
-            fighting: true,
-            });
-        }
-        }, 1000);
+    const monsteratk = setInterval(() => {
+      let heroc = {...this.state.hero};
+      heroc.chp = heroc.chp - this.state.monster.atk;
+      if (this.state.hero.chp <= 0) {
+        clearInterval(heroatk);
+        clearInterval(monsteratk);
+        console.log("hero is dead");
+      }
+      this.setState({
+        hero: heroc,
+      })
+    }, this.state.monster.aspd);
   }
-}
 
   render() {
     const hero = this.state.hero;
     const monster = this.state.monster;
-    const herohppc = Math.trunc((hero[3] / hero[4]) * 100);
-    const monsterhppc = Math.trunc((monster[3] / monster[4]) * 100);
+    const herohppc = Math.trunc((hero.chp / hero.mhp) * 100);
+    const monsterhppc = Math.trunc((monster.chp / monster.mhp) * 100);
     let monstername;
     let monsterbtn;
-    if (monster[0]) {
-      monstername = monster[0];
-      monsterbtn = monster[0];
-      } else {
-        monstername = String.fromCharCode(160);
-        monsterbtn = "Select Enemy";
-      }
-    
+    if (monster.name) {
+      monstername = monster.name;
+      monsterbtn = monster.name;
+    } else {
+      monstername = String.fromCharCode(160);
+      monsterbtn = "Select Enemy";
+    }
+
     let monsterMenu = null;
     const tiersUnlocked = this.props.tiersUnlocked;
     if (this.state.monsterMenu) {
@@ -187,11 +190,11 @@ class Fight extends React.Component {
     }
     return (
       <div className="fight">
-        <div className="heroname">{hero[0]}</div>
+        <div className="heroname">{hero.name}</div>
         <div className="hpcontainer">
           <div className="herohpbar" style={{ width: herohppc + "%" }}></div>
         </div>
-        <div className="herohp">{hero[3] + " / " + hero[4]}</div>
+        <div className="herohp">{hero.chp + " / " + hero.mhp}</div>
         <button className="herobtn">Equipment</button>
 
         <div className="monstername">{monstername}</div>
@@ -201,7 +204,7 @@ class Fight extends React.Component {
             style={{ width: monsterhppc + "%" }}
           ></div>
         </div>
-        <div className="monsterhp">{monster[3] + " / " + monster[4]}</div>
+        <div className="monsterhp">{monster.chp + " / " + monster.mhp}</div>
         <button
           className="monsterbtn"
           onClick={() => this.setState({ monsterMenu: true })}
