@@ -81,3 +81,23 @@ body {
   background: lightgreen;
   border: 1px solid black;
 }
+
+.equipmentmenu {
+  height: 50%;
+  width: 50%;
+  position: fixed;
+  left: 40%;
+  top: 10%;
+  background: lightgreen;
+  border: 1px solid black;
+}
+
+.equiptooltip {
+  height: 50%;
+  width: 50%;
+  position: fixed;
+  left: 40%;
+  top: 10%;
+  background: lightgreen;
+  border: 1px solid black;
+}

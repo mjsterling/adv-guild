@@ -12,12 +12,47 @@ const items = [
     aspd: 1,
     upcost: ["Aluminium", 50],
   },
-  { id: "g0", name: "No Gloves", atk: 0, dr: 1, aspd: 1, upcost: ["Aluminium", 50], },
-  { id: "h0", name: "No Helmet", atk: 0, dr: 1, aspd: 1, upcost: ["Aluminium", 50], },
-  { id: "b0", name: "No Armour", atk: 0, dr: 1, aspd: 1, upcost: ["Aluminium", 50], },
-  { id: "l0", name: "No Legs", atk: 0, dr: 1, aspd: 1, upcost: ["Aluminium", 50], },
+  {
+    id: "g0",
+    name: "No Gloves",
+    atk: 0,
+    dr: 1,
+    aspd: 1,
+    upcost: ["Aluminium", 50],
+  },
+  {
+    id: "h0",
+    name: "No Helmet",
+    atk: 0,
+    dr: 1,
+    aspd: 1,
+    upcost: ["Aluminium", 50],
+  },
+  {
+    id: "b0",
+    name: "No Armour",
+    atk: 0,
+    dr: 1,
+    aspd: 1,
+    upcost: ["Aluminium", 50],
+  },
+  {
+    id: "l0",
+    name: "No Legs",
+    atk: 0,
+    dr: 1,
+    aspd: 1,
+    upcost: ["Aluminium", 50],
+  },
   //tier 1 - aluminium
-  { id: "w1", name: "Aluminium Sword", atk: 5, dr: 1, aspd: 0.9, upcost: ["Aluminium", 500], },
+  {
+    id: "w1",
+    name: "Aluminium Sword",
+    atk: 5,
+    dr: 1,
+    aspd: 0.9,
+    upcost: ["Aluminium", 500],
+  },
   { id: "g1", name: "Foil Gloves", atk: 2, dr: 0.95, aspd: 0.95 },
   { id: "h1", name: "Foil Helmet", atk: 1, dr: 0.95, aspd: 0.95 },
   { id: "b1", name: "Foil Chestplate", atk: 1, dr: 0.95, aspd: 0.95 },
@@ -194,6 +229,7 @@ class Fight extends React.Component {
         name: "Warrior",
         atk: 4,
         aspd: 1000,
+        dr: 1,
         chp: 100,
         mhp: 100,
         equipment: ["w0", "g0", "h0", "b0", "l0"],
@@ -212,6 +248,26 @@ class Fight extends React.Component {
       equiptooltip: false,
       equiptooltipid: null,
     };
+  }
+
+  componentDidMount() {
+    this.calculateStats();
+  }
+
+  calculateStats() {
+    let hero = this.state.hero;
+    let equipment = hero.equipment;
+    for (let i = 0; i < 5; i++) {
+      hero.atk = hero.atk + items.find((x) => x.id == equipment[i]).atk;
+    }
+    for (let i = 0; i < 5; i++) {
+      hero.dr = hero.dr * items.find((x) => x.id == equipment[i]).dr;
+    }
+    for (let i = 0; i < 5; i++) {
+      hero.aspd = hero.aspd + items.find((x) => x.id == equipment[i]).aspd;
+    }
+    console.log(hero);
+    this.setState({ hero: hero },);
   }
 
   render() {
@@ -278,28 +334,40 @@ class Fight extends React.Component {
 
   openequipTooltip() {
     let item = this.state.equiptooltipid;
-    return <Equiptooltip item={item} onClick={() => this.upgradeItem(item)} />;
+    return (
+      <div className="equiptooltip">
+        <Equiptooltip item={item} onClick={() => this.upgradeItem(item)} />;
+      </div>
+    );
   }
 
   upgradeItem(id) {
     let item = items.find((x) => x.id === id);
-    let resource = this.props.inventory.find(x => x.name == item.upcost[0]).amount;
+    let resource = this.props.inventory.find((x) => x.name == item.upcost[0])
+      .amount;
     if (this.props.inventory[0].amount >= item.upcost[1]) {
       let hero = this.state.hero;
-      let equipid = hero.equipment.findIndex(x => x == id);
-      let arrid = item.id.split('');
+      let equipid = hero.equipment.findIndex((x) => x == id);
+      let arrid = item.id.split("");
       arrid[1] = parseInt(arrid[1], 10);
       arrid[1]++;
-      let newitemid = arrid.join('');
+      let newitemid = arrid.join("");
       hero.equipment[equipid] = newitemid;
       console.log(hero);
-      this.setState({
-        hero: hero,
-        equiptooltip: false,
-        equipmentMenu: false,
-      }, () => this.props.buyUpgrade(item.upcost[0], item.upcost[1]));
-
+      this.setState(
+        {
+          hero: hero,
+          equiptooltip: false,
+          equipmentMenu: false,
+        },
+        () => this.updateStats(item.upcost[0], item.upcost[1])
+      );
     }
+  }
+
+  updateStats(name, cost) {
+    this.calculateStats();
+    this.props.buyUpgrade(name, cost);
   }
 
   //Select Monster onclick
@@ -378,8 +446,13 @@ class Fight extends React.Component {
     for (let i = 0; i < 5; i++) {
       equipbtns[i] = this.renderEquipment(i);
     }
-    return <div className="inventorymenu">{equipbtns}</div>;
-  }
+    return (
+    <div className="equipmentmenu">
+    {equipbtns}
+    <button onClick={() => this.setState({equipmentMenu: false,})}>Close menu</button>
+    </div>
+  )
+    }
 
   renderEquipment(i) {
     let item = this.state.hero.equipment[i];
