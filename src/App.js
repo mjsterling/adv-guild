@@ -169,7 +169,7 @@ class Game extends React.Component {
 
   buyUpgrade(name, cost) {
     let inventory = this.state.inventory;
-    let resource = inventory.findIndex((x) => x.name == name);
+    let resource = inventory.findIndex((x) => x.name === name);
     inventory[resource].amount = inventory[resource].amount - cost;
     this.setState({
       inventory: inventory,
@@ -177,7 +177,6 @@ class Game extends React.Component {
   }
 
   render() {
-    let inventory = this.state.inventory;
     let inventorymenu = null;
     if (this.state.inventorymenu) {
       inventorymenu = this.inventoryMenu();
@@ -258,13 +257,13 @@ class Fight extends React.Component {
     let hero = this.state.hero;
     let equipment = hero.equipment;
     for (let i = 0; i < 5; i++) {
-      hero.atk = hero.atk + items.find((x) => x.id == equipment[i]).atk;
+      hero.atk = hero.atk + items.find((x) => x.id === equipment[i]).atk;
     }
     for (let i = 0; i < 5; i++) {
-      hero.dr = hero.dr * items.find((x) => x.id == equipment[i]).dr;
+      hero.dr = hero.dr * items.find((x) => x.id === equipment[i]).dr;
     }
     for (let i = 0; i < 5; i++) {
-      hero.aspd = hero.aspd + items.find((x) => x.id == equipment[i]).aspd;
+      hero.aspd = hero.aspd * items.find((x) => x.id === equipment[i]).aspd;
     }
     console.log(hero);
     this.setState({ hero: hero },);
@@ -314,7 +313,7 @@ class Fight extends React.Component {
         <div className="monsterhp">{monster.chp + " / " + monster.mhp}</div>
         <button
           className="monsterbtn"
-          onClick={() => this.setState({ monsterMenu: true })}
+          onClick={() => this.setState({ monsterMenu: !this.state.monsterMenu })}
         >
           {monster.name}
         </button>
@@ -343,9 +342,9 @@ class Fight extends React.Component {
 
   upgradeItem(id) {
     let item = items.find((x) => x.id === id);
-    let resource = this.props.inventory.find((x) => x.name == item.upcost[0])
+    let stockpile = this.props.inventory.find((x) => x.name == item.upcost[0])
       .amount;
-    if (this.props.inventory[0].amount >= item.upcost[1]) {
+    if (stockpile >= item.upcost[1]) {
       let hero = this.state.hero;
       let equipid = hero.equipment.findIndex((x) => x == id);
       let arrid = item.id.split("");
@@ -442,6 +441,7 @@ class Fight extends React.Component {
   }
 
   equipmentMenu() {
+    let hero = this.state.hero;
     let equipbtns = Array(5);
     for (let i = 0; i < 5; i++) {
       equipbtns[i] = this.renderEquipment(i);
@@ -450,6 +450,12 @@ class Fight extends React.Component {
     <div className="equipmentmenu">
     {equipbtns}
     <button onClick={() => this.setState({equipmentMenu: false,})}>Close menu</button>
+    <ul>
+    <li>Stats:</li>
+    <li>{"Attack: " + hero.atk + "dmg"}</li>
+    <li>{"Dmg Reduction: " + hero.dr + "%"}</li>
+    <li>{"Att Speed: " + (hero.aspd / 1000).toFixed(2) + "s"}</li>
+    </ul>
     </div>
   )
     }
@@ -464,7 +470,6 @@ class Fight extends React.Component {
 
 function Equipment(props) {
   let itemname = items.find((x) => x.id == props.item).name;
-  console.log(itemname);
   return <button onClick={props.onClick}>{itemname}</button>;
 }
 
