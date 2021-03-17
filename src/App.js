@@ -1,5 +1,3 @@
-//instead of using state, can use something else to remember what HP totals are and read them from there instead of the local state during render (custom hook?)
-
 import React from "react";
 
 const items = [
@@ -60,7 +58,8 @@ const items = [
     upcost: ["Bronze", 100],
   },
   {
-    id: "g1",
+    tier: 1,
+    type: "gloves",
     name: "Foil Gloves",
     atk: 2,
     mhp: 25,
@@ -68,7 +67,8 @@ const items = [
     upcost: ["Bronze", 100],
   },
   {
-    id: "h1",
+    tier: 1,
+    type: "helmet",
     name: "Foil Helmet",
     atk: 1,
     mhp: 25,
@@ -76,7 +76,8 @@ const items = [
     upcost: ["Bronze", 100],
   },
   {
-    id: "b1",
+    tier: 1,
+    type: "body",
     name: "Foil Chestplate",
     atk: 1,
     mhp: 25,
@@ -84,7 +85,8 @@ const items = [
     upcost: ["Bronze", 100],
   },
   {
-    id: "l1",
+    tier: 1,
+    type: "legs",
     name: "Foil Platelegs",
     atk: 1,
     mhp: 25,
@@ -92,40 +94,46 @@ const items = [
     upcost: ["Bronze", 100],
   },
   {
-    id: "w2",
+    tier: 2,
+    type: "weapon",
     name: "Bronze Sword",
     atk: 20,
     mhp: 25,
     aspd: 0.6,
     upcost: ["Steel", 1000],
   },
+  //tier 2 - Bronze
   {
-    id: "g2",
-    name: "Foil Gloves",
+    tier: 2,
+    type: "gloves",
+    name: "Bronze Gloves",
     atk: 10,
     mhp: 50,
     aspd: 0.9,
     upcost: ["Steel", 1000],
   },
   {
-    id: "h2",
-    name: "Foil Helmet",
+    tier: 2,
+    type: "helmet",
+    name: "Bronze Helmet",
     atk: 5,
     mhp: 75,
     aspd: 0.9,
     upcost: ["Steel", 1000],
   },
   {
-    id: "b2",
-    name: "Foil Chestplate",
+    tier: 2,
+    type: "body",
+    name: "Bronze Chestplate",
     atk: 5,
     mhp: 75,
     aspd: 0.9,
     upcost: ["Steel", 1000],
   },
   {
-    id: "l2",
-    name: "Foil Platelegs",
+    tier: 2,
+    type: "legs",
+    name: "Bronze Platelegs",
     atk: 5,
     mhp: 75,
     aspd: 0.9,
@@ -134,13 +142,12 @@ const items = [
 ];
 
 // const setbonuses = [
-//   { id: "t1", name: "Full Aluminium", atk: 10, dr: 0.9, aspd: 0.9 },
+//   { tier: 1, name: "Full Aluminium", atk: 10, dr: 0.9, aspd: 0.9 },
 // ];
 
 const monsters = [
   {
     tier: 0,
-    id: "m0",
     name: "Aluminium Golem",
     atk: 3,
     aspd: 2000,
@@ -155,7 +162,6 @@ const monsters = [
   },
   {
     tier: 0,
-    id: "w0",
     name: "Balsa Treant",
     atk: 3,
     aspd: 2000,
@@ -171,7 +177,6 @@ const monsters = [
   },
   {
     tier: 0,
-    id: "f0",
     name: "Sentient Jute",
     atk: 3,
     aspd: 2000,
@@ -187,7 +192,6 @@ const monsters = [
   },
   {
     tier: 1,
-    id: "m1",
     name: "Bronze Golem",
     atk: 10,
     aspd: 2000,
@@ -202,7 +206,6 @@ const monsters = [
   },
   {
     tier: 1,
-    id: "w1",
     name: "Redwood Treant",
     atk: 10,
     aspd: 2000,
@@ -217,7 +220,6 @@ const monsters = [
   },
   {
     tier: 1,
-    id: "c1",
     name: "Sentient Cotton",
     atk: 10,
     aspd: 2000,
@@ -235,6 +237,7 @@ const monsters = [
 //list of classes and their stats?
 
 class Game extends React.Component {
+  //class Game globals
   constructor(props) {
     super(props);
     this.monsterDrop = this.monsterDrop.bind(this);
@@ -248,85 +251,33 @@ class Game extends React.Component {
         { name: "Redwood", amount: 0 },
         { name: "Cotton", amount: 0 },
       ],
-      // unlocked ?
-      tier: 0,
+      tier: 0, //highest unlocked tier
       settingsmenu: { open: false, sound: true, music: true },
       inventorymenu: false,
     };
   }
 
   componentDidMount() {
+    //fetch game save from local storage
     let inventory = this.state.inventory;
     let tier = this.state.tier;
     for (let i = 0; i < inventory.length; i++) {
       inventory[i].amount = parseInt(
         localStorage.getItem(inventory[i].name),
-        10);
+        10
+      );
     }
-    tier = localStorage.getItem("tier") ? parseInt(localStorage.getItem("tier"), 10) : 0;
+    tier = localStorage.getItem("tier")
+      ? parseInt(localStorage.getItem("tier"), 10)
+      : 0;
     this.setState({
       inventory: inventory,
       tier: tier,
     });
   }
 
-  componentDidUpdate() {
-    localStorage.removeItem("tier");
-    localStorage.setItem("tier", (this.state.tier).toString(10));
-    let inventory = this.state.inventory;
-    for (let i = 0; i < inventory.length; i++) {
-      localStorage.removeItem(inventory[i].name);
-      localStorage.setItem(inventory[i].name, (inventory[i].amount).toString(10));
-    }
-    // console.log(localStorage.getItem("Aluminium"));
-  }
-
-  logLocalStorage() {
-    console.log("local storage");
-    for (let i = 0; i < localStorage.length; i++) {
-      console.log(
-        localStorage.key(i) +
-          "=[" +
-          localStorage.getItem(localStorage.key(i)) +
-          "]"
-      );
-    }
-  }
-
-  inventoryMenu() {
-    let inventorylist = Array(this.state.inventory.length);
-    for (let i = 0; i < inventorylist.length; i++) {
-      inventorylist[i] = this.state.inventory[i].amount
-        ? this.renderInventory(i)
-        : null;
-    }
-    return <div className="inventorymenu">{inventorylist}</div>;
-  }
-
-  renderInventory(i) {
-    return <Inventory key={i} contents={this.state.inventory[i]} />;
-  }
-
-  monsterDrop(loot) {
-    let inventory = this.state.inventory;
-    let drop = Math.floor(Math.random() * loot.length);
-    let inventoryi = this.state.inventory[drop];
-    inventoryi.amount =
-      1 + inventoryi.amount + Math.floor(Math.random() * loot[drop].max);
-    inventory.splice(drop, 1, inventoryi);
-    this.setState({ inventory: inventory });
-  }
-
-  buyUpgrade(name, cost) {
-    let inventory = this.state.inventory;
-    let resource = inventory.findIndex((x) => x.name === name);
-    inventory[resource].amount = inventory[resource].amount - cost;
-    this.setState({
-      inventory: inventory,
-    });
-  }
-
   render() {
+    //JSX element returned from inventoryMenu function stored as variable
     let inventorymenu = null;
     if (this.state.inventorymenu) {
       inventorymenu = this.inventoryMenu();
@@ -342,14 +293,8 @@ class Game extends React.Component {
             buyUpgrade={this.buyUpgrade}
             tier={this.state.tier}
           />
-          {/* <Fight
-            className="hero0"
-            tiersUnlocked={this.state.tiersUnlocked}
-            monsterDrop={this.monsterDrop}
-            inventory={this.state.inventory}
-            buyUpgrade={this.buyUpgrade}
-          /> */}
           <div className="menubar">
+            {/* toggle settings - TODO */}
             <button className="settingsbtn">Settings</button>
             <button onClick={() => this.logLocalStorage()}>
               Console.Log Local Storage
@@ -357,6 +302,7 @@ class Game extends React.Component {
             <button onClick={() => localStorage.clear()}>
               Clear Local Storage
             </button>
+            {/* toggle inventory */}
             <button
               className="inventorybtn"
               onClick={() =>
@@ -371,8 +317,68 @@ class Game extends React.Component {
       </div>
     );
   }
+
+  componentDidUpdate() {
+    //save game to localStorage
+    localStorage.removeItem("tier");
+    localStorage.setItem("tier", this.state.tier.toString(10));
+    let inventory = this.state.inventory;
+    for (let i = 0; i < inventory.length; i++) {
+      localStorage.removeItem(inventory[i].name);
+      localStorage.setItem(inventory[i].name, inventory[i].amount.toString(10));
+    }
+  }
+
+  logLocalStorage() {
+    //development button only - TODO remove for production
+    console.log("local storage");
+    for (let i = 0; i < localStorage.length; i++) {
+      console.log(
+        localStorage.key(i) +
+          "=[" +
+          localStorage.getItem(localStorage.key(i)) +
+          "]"
+      );
+    }
+  }
+
+  //generate inventory items only if their amount > 0 and return JSX element
+  inventoryMenu() {
+    let inventorylist = Array(this.state.inventory.length);
+    for (let i = 0; i < inventorylist.length; i++) {
+      inventorylist[i] = this.state.inventory[i].amount
+        ? this.renderInventory(i)
+        : null;
+    }
+    return <div className="inventorymenu">{inventorylist}</div>;
+  }
+
+  //dynamic class iteratively called inside inventoryMenu() for loop
+  renderInventory(i) {
+    return <Inventory key={i} contents={this.state.inventory[i]} />;
+  }
+
+  //calculate monster drop tables and update inventory totals. receives arg as array from Fight.fight()
+  monsterDrop(loot) {
+    let inventory = this.state.inventory;
+    let drop = Math.floor(Math.random() * loot.length);
+    inventory[drop].amount += Math.floor(Math.random() * loot[drop].max) + 1;
+    inventory.splice(drop, 1, inventory[drop]);
+    this.setState({ inventory: inventory });
+  }
+
+  //receives name, cost args from Fight.updateStats()
+  buyUpgrade(name, cost) {
+    let inventory = this.state.inventory;
+    let resource = inventory.findIndex((x) => x.name === name);
+    inventory[resource].amount -= cost;
+    this.setState({
+      inventory: inventory,
+    });
+  }
 }
 
+//function class returns line items of Game.state.inventory pairs based on Game.inventoryMenu() for loop
 function Inventory(props) {
   return <li>{props.contents.name + ": " + props.contents.amount}</li>;
 }
@@ -390,7 +396,13 @@ class Fight extends React.Component {
         cxp: 0,
         mxp: 100,
         level: 1,
-        equipment: ["w0", "g0", "h0", "b0", "l0"],
+        equipment: { 
+          weapon: 0,
+          gloves: 0,
+          helmet: 0,
+          body: 0,
+          legs: 0,
+        },
       },
       monster: {
         id: null,
@@ -418,64 +430,76 @@ class Fight extends React.Component {
     this.setLocalStorage();
   }
 
+  // load game save from localstorage - TODO append unique iterator to permit saving of multiple Fight classes
   getLocalStorage() {
-    let hero = this.state.hero;
-    hero.name = null;
-    hero.name = localStorage.getItem("name")
-      ? localStorage.getItem("name")
-      : "Warrior";
-    hero.cxp = localStorage.getItem("cxp")
-      ? parseInt(localStorage.getItem("cxp"), 10)
-      : 0;
-    hero.mxp = localStorage.getItem("mxp")
-      ? parseInt(localStorage.getItem("mxp"), 10)
-      : 100;
-    hero.level = localStorage.getItem("level")
-      ? parseInt(localStorage.getItem("level"), 10)
-      : 1;
-    for (let i = 0; i < 5; i++) {
-      hero.equipment[i] = localStorage.getItem("equipment" + i)
-        ? localStorage.getItem("equipment" + i)
-        : items[i].id;
-    }
-    this.setState({
-      hero: hero,
-    });
+    // let hero = this.state.hero;
+    // hero.name = null;
+    // hero.name = localStorage.getItem("name")
+    //   ? localStorage.getItem("name")
+    //   : "Warrior";
+    // hero.cxp = localStorage.getItem("cxp")
+    //   ? parseInt(localStorage.getItem("cxp"), 10)
+    //   : 0;
+    // hero.mxp = localStorage.getItem("mxp")
+    //   ? parseInt(localStorage.getItem("mxp"), 10)
+    //   : 100;
+    // hero.level = localStorage.getItem("level")
+    //   ? parseInt(localStorage.getItem("level"), 10)
+    //   : 1;
+    // hero.equipment.weapon = localStorage.getItem("weapon")
+    // ? parseInt(localStorage.getItem("weapon"), 10)
+    // : 1;
+    // hero.equipment.helmet = localStorage.getItem("helmet")
+    // ? parseInt(localStorage.getItem("helmet"), 10)
+    // : 1;
+    // hero.equipment.legs = localStorage.getItem("legs")
+    // ? parseInt(localStorage.getItem("legs"), 10)
+    // : 1;    hero.equipment.body = localStorage.getItem("body")
+    // ? parseInt(localStorage.getItem("body"), 10)
+    // : 1;    hero.equipment.gloves = localStorage.getItem("gloves")
+    // ? parseInt(localStorage.getItem("gloves"), 10)
+    // : 1;
+    // this.setState({
+    //   hero: hero,
+    // });
   }
-
+  
+  //save game to localstorage - TODO append unique iterator to permit saving of multiple Fight classes
   setLocalStorage() {
     let hero = this.state.hero;
     localStorage.removeItem("name");
     localStorage.setItem("name", hero.name);
     localStorage.removeItem("cxp");
-    localStorage.setItem("cxp", (hero.cxp).toString(10));
+    localStorage.setItem("cxp", hero.cxp.toString(10));
     localStorage.removeItem("mxp");
-    localStorage.setItem("mxp", (hero.mxp).toString(10));
+    localStorage.setItem("mxp", hero.mxp.toString(10));
     localStorage.removeItem("level");
-    localStorage.setItem("level", (hero.level).toString(10));
-    for (let i = 0; i < 5; i++) {
-    localStorage.removeItem("equip" + i);
-    localStorage.setItem("equip" + i, hero.equipment[i]);
-  }
+    localStorage.setItem("level", hero.level.toString(10));
+    localStorage.removeItem("weapon");
+    localStorage.setItem("weapon", hero.equipment.weapon);
+    localStorage.removeItem("helmet");
+    localStorage.setItem("helmet", hero.equipment.helmet);
+    localStorage.removeItem("body");
+    localStorage.setItem("body", hero.equipment.body);
+    localStorage.removeItem("legs");
+    localStorage.setItem("legs", hero.equipment.legs);
+    localStorage.removeItem("gloves");
+    localStorage.setItem("gloves", hero.equipment.gloves);
   }
 
   calculateStats(f) {
     let hero = this.state.hero;
     let equipment = hero.equipment;
-    hero.atk = 0 + hero.level ** 2;
-    hero.mhp = 100 + 10 * (hero.level ** 2 - hero.level);
-    hero.aspd = Math.floor(2000 * (0.95 ** hero.level - 1));
+    hero.atk = hero.level;
+    hero.mhp = 100 + 20 * (hero.level - 1);
+    hero.aspd = Math.floor(2000 * 0.98 ** (hero.level - 1));
     console.log(hero.aspd);
+    let equipentries = Object.entries(equipment);
     for (let i = 0; i < 5; i++) {
-      hero.atk += items.find((x) => x.id === equipment[i]).atk;
+      hero.atk += items.find((x) => x.type === equipentries[i][0] && x.tier === equipentries[i][1]).atk;
+      hero.mhp += items.find((x) => x.type === equipentries[i][0] && x.tier === equipentries[i][1]).mhp;
+      hero.aspd *= items.find((x) => x.type === equipentries[i][0] && x.tier === equipentries[i][1]).aspd;
     }
-    for (let i = 0; i < 5; i++) {
-      hero.mhp += items.find((x) => x.id === equipment[i]).mhp;
-    }
-    for (let i = 0; i < 5; i++) {
-      hero.aspd *= items.find((x) => x.id === equipment[i]).aspd;
-    }
-    console.log(hero.aspd);
     this.setState({ hero: hero }, () => (f ? this.fight() : null));
   }
 
@@ -788,11 +812,13 @@ class Fight extends React.Component {
   }
 
   renderEquipment(i) {
-    let item = this.state.hero.equipment[i];
+    let itemtype = Object.keys(this.state.hero.equipment)[i];
+    let itemtier = Object.values(this.state.hero.equipment)[i];
     return (
       <Equipment
         key={i}
-        item={item}
+        itemtype={itemtype}
+        itemtier={itemtier}
         onClick={() => this.equipTooltip(item)}
         close={() => this.closeETT()}
       />
@@ -801,7 +827,7 @@ class Fight extends React.Component {
 }
 
 function Equipment(props) {
-  let itemname = items.find((x) => x.id === props.item).name;
+  let itemname = items.find((x) => x.type === props.itemtype && x.tier === props.itemtier).name;
   return <button onClick={props.onClick}>{itemname}</button>;
 }
 

@@ -1,10 +1,21 @@
 * {
   box-sizing: border-box;
+  list-style-type: none;
 }
 
 body {
   margin: 0;
   font-family: sans-serif;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ol {
+  padding: 0;
+  margin: 0;
 }
 
 .container {
@@ -22,7 +33,8 @@ body {
 .fight {
   width: 100%;
   height: 15%;
-  margin: 0 auto;
+  margin: auto;
+  position: relative;
   display: flex;
   border: 1px solid black;
   flex-flow: column wrap;
@@ -37,12 +49,13 @@ body {
 
 .hpcontainer {
   width: 40%;
-  height: 10%;
+  height: 15%;
   border: 1px solid black;
-  background: lightgray;
+  background: darkgray;
   display: flex;
   justify-content: flex start;
   align-items: center;
+  position: relative;
 }
 
 .herohpbar {
@@ -52,12 +65,46 @@ body {
   border: 1px solid red;
 }
 
+.herohp {
+  position: absolute;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+}
+
+.heroxpbar {
+  background: rgb(255, 174, 0);
+  height: 100%;
+  margin: 0;
+  border: 1px solid rgb(255, 174, 0);
+}
+
+.heroxp {
+  position: absolute;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+}
+
 
 .monsterhpbar {
   background: red;
   height: 100%;
   margin: 0;
   border: 1px solid red;
+}
+
+.monsterhp {
+  position: absolute;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-weight: bold;
 }
 
 .menubar {
@@ -82,6 +129,24 @@ body {
   border: 1px solid black;
 }
 
+.closemenu {
+  height: 6vh;
+  width: 10vh;
+}
+
+.monsterbtns {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.monsterbtns button {
+  height: 6vh;
+  width: 10vh;
+}
+
 .equipmentmenu {
   height: 50%;
   width: 50%;
@@ -90,6 +155,38 @@ body {
   top: 10%;
   background: lightgreen;
   border: 1px solid black;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+.equipbtns {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: space-evenly;
+  align-content: space-evenly;
+  height: 40%;
+}
+
+.equipbtns button {
+  height: 8vh;
+  width: 8vh;
+}
+
+.equipttbtns {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+
+.equipttbtns button {
+  height: 8vh;
+  width: 20vh;
 }
 
 .equiptooltip {
@@ -100,4 +197,20 @@ body {
   top: 10%;
   background: lightgreen;
   border: 1px solid black;
+  z-index: 3;
+}
+
+.herodead {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(170, 170, 170, 0.5);
+  z-index: 1;
+  color: white;
+  font-size: 3vh;
+  font-weight: bold;
+  text-align: center;
+  padding: 10% 0;
 }
