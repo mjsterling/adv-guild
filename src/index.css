@@ -9,8 +9,21 @@ body {
 }
 
 ul {
-  padding: 0;
+  padding: 0 2%;
   margin: 0;
+}
+
+.inventorymenu  {
+  display: flex;
+  flex-flow: column wrap;
+  height: 7%;
+  justify-content: flex-start;
+  align-items: space-around;
+  align-content: space-around;
+}
+
+.inventorymenu > * {
+  padding: 0 5% 0 0;
 }
 
 ol {
@@ -25,7 +38,7 @@ ol {
   background-color: skyblue;
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
   font-size: 1.8vh;
 }
@@ -88,6 +101,7 @@ ol {
   width: 100%;
   color: white;
   font-weight: bold;
+  font-size: 1.6vh;
 }
 
 
@@ -107,16 +121,35 @@ ol {
   font-weight: bold;
 }
 
-.menubar {
-  justify-self: end;
-  height: 10%;
-  border: 1px solid black;
+.menubtns {
+  height: 50%;
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   padding: 1%;
   margin: auto 0 0 0;
+}
+
+.menubar {
+  height: 20%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.log {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  padding: 1%;
+  margin: auto 0 0 0;
+  overflow: scroll;
+  text-align: center;
+}
+
+.logitem {
+  font-size: 2vh;
 }
 
 .monstermenu {
@@ -189,7 +222,7 @@ ol {
   width: 20vh;
 }
 
-.equiptooltip {
+.equipTT {
   height: 50%;
   width: 50%;
   position: fixed;
