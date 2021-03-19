@@ -109,7 +109,7 @@ const items = [
     name: "Bronze Gloves",
     atk: 4,
     mhp: 50,
-    aspd: 0.9,
+    aspd: 0.8,
     upcost: ["Steel", 1000],
   },
   {
@@ -139,6 +139,105 @@ const items = [
     aspd: 0.9,
     upcost: ["Steel", 1000],
   },
+  {
+    tier: 3,
+    type: "weapon",
+    name: "Steel Sword",
+    atk: 30,
+    mhp: 100,
+    aspd: 0.7,
+    upcost: ["Titanium", 5000],
+  },
+  {
+    tier: 3,
+    type: "gloves",
+    name: "Steel Gloves",
+    atk: 10,
+    mhp: 150,
+    aspd: 0.7,
+    upcost: ["Titanium", 5000],
+  },
+  {
+    tier: 3,
+    type: "helmet",
+    name: "Steel Helmet",
+    atk: 5,
+    mhp: 300,
+    aspd: 0.9,
+    upcost: ["Titanium", 5000],
+  },
+  {
+    tier: 3,
+    type: "helmet",
+    name: "Steel Helmet",
+    atk: 5,
+    mhp: 300,
+    aspd: 0.9,
+    upcost: ["Titanium", 5000],
+  },
+  {
+    tier: 3,
+    type: "body",
+    name: "Steel Platebody",
+    atk: 5,
+    mhp: 300,
+    aspd: 0.9,
+    upcost: ["Titanium", 5000],
+  },
+  {
+    tier: 3,
+    type: "legs",
+    name: "Steel Platelegs",
+    atk: 5,
+    mhp: 300,
+    aspd: 0.9,
+    upcost: ["Titanium", 5000],
+  },
+  {
+    tier: 4,
+    type: "weapon",
+    name: "Titanium Sword",
+    atk: 100,
+    mhp: 300,
+    aspd: 0.6,
+    upcost: ["Tungsten", 25000],
+  },
+  {
+    tier: 4,
+    type: "gloves",
+    name: "Titanium Gloves",
+    atk: 50,
+    mhp: 450,
+    aspd: 0.6,
+    upcost: ["Tungsten", 25000],
+  },
+  {
+    tier: 4,
+    type: "helmet",
+    name: "Titanium Helmet",
+    atk: 10,
+    mhp: 750,
+    aspd: 0.85,
+    upcost: ["Tungsten", 25000],
+  },
+  {
+    tier: 4,
+    type: "body",
+    name: "Titanium Platebody",
+    atk: 10,
+    mhp: 750,
+    aspd: 0.85,
+    upcost: ["Tungsten", 25000],
+  },
+  {
+    tier: 4,
+    type: "legs",
+    name: "Titanium Platelegs",
+    atk: 10,
+    mhp: 750,
+    aspd: 0.85,
+    upcost: ["Tungsten", 25000],
+  },
 ];
 
 // const setbonuses = [
@@ -156,6 +255,7 @@ const monsters = [
     xp: 20,
     loot: [
       { name: "Aluminium", max: 10 },
+      { name: "Aluminium", max: 10 },
       { name: "Balsa", max: 3 },
       { name: "Jute", max: 3 },
     ],
@@ -171,6 +271,7 @@ const monsters = [
 
     loot: [
       { name: "Aluminium", max: 3 },
+      { name: "Balsa", max: 10 },
       { name: "Balsa", max: 10 },
       { name: "Jute", max: 3 },
     ],
@@ -188,6 +289,21 @@ const monsters = [
       { name: "Aluminium", max: 3 },
       { name: "Balsa", max: 3 },
       { name: "Jute", max: 10 },
+      { name: "Jute", max: 10 },
+    ],
+  },
+  {
+    tier: 1,
+    name: "Corvus the Mighty",
+    atk: 10,
+    aspd: 1500,
+    chp: 400,
+    mhp: 400,
+    xp: 120,
+    loot: [
+      { name: "Aluminium", max: 30 },
+      { name: "Balsa", max: 30 },
+      { name: "Jute", max: 30 },
     ],
   },
   {
@@ -199,6 +315,7 @@ const monsters = [
     mhp: 200,
     xp: 60,
     loot: [
+      { name: "Bronze", max: 30 },
       { name: "Bronze", max: 30 },
       { name: "Redwood", max: 10 },
       { name: "Cotton", max: 10 },
@@ -215,6 +332,7 @@ const monsters = [
     loot: [
       { name: "Bronze", max: 10 },
       { name: "Redwood", max: 30 },
+      { name: "Redwood", max: 30 },
       { name: "Cotton", max: 10 },
     ],
   },
@@ -230,6 +348,125 @@ const monsters = [
       { name: "Bronze", max: 10 },
       { name: "Redwood", max: 10 },
       { name: "Cotton", max: 30 },
+      { name: "Cotton", max: 30 },
+    ],
+  },
+  {
+    tier: 2,
+    name: "The Indomitable",
+    atk: 50,
+    aspd: 1500,
+    chp: 1200,
+    mhp: 1200,
+    xp: 300,
+    loot: [
+      { name: "Bronze", max: 100 },
+      { name: "Redwood", max: 100 },
+      { name: "Cotton", max: 100 },
+    ],
+  },
+  {
+    tier: 2,
+    name: "Steel Golem",
+    atk: 30,
+    aspd: 2000,
+    chp: 600,
+    mhp: 600,
+    xp: 120,
+    loot: [
+      { name: "Steel", max: 100 },
+      { name: "Steel", max: 100 },
+      { name: "Maple", max: 30 },
+      { name: "Cashmere", max: 30 },
+    ],
+  },
+  {
+    tier: 2,
+    name: "Maple Treant",
+    atk: 30,
+    aspd: 200,
+    chp: 600,
+    mhp: 600,
+    xp: 120,
+    loot: [
+      { name: "Steel", max: 30 },
+      { name: "Maple", max: 100 },
+      { name: "Maple", max: 100 },
+      { name: "Cashmere", max: 30 },
+    ],
+  },
+  {
+    tier: 2,
+    name: "Very Angry Goat",
+    atk: 30,
+    aspd: 2000,
+    chp: 600,
+    mhp: 600,
+    xp: 120,
+    loot: [
+      { name: "Steel", max: 30 },
+      { name: "Maple", max: 30 },
+      { name: "Cashmere", max: 100 },
+      { name: "Cashmere", max: 100 },
+    ],
+  },
+  {
+    tier: 3,
+    name: "The Insurmountable",
+    atk: 50,
+    aspd: 500,
+    chp: 3000,
+    mhp: 3000,
+    xp: 1200,
+    loot: [
+      { name: "Steel", max: 300 },
+      { name: "Maple", max: 300 },
+      { name: "Cashmere", max: 300 },
+    ],
+  },
+  {
+    tier: 3,
+    name: "Titanium Golem",
+    atk: 50,
+    aspd: 1000,
+    chp: 3000,
+    mhp: 3000,
+    xp: 600,
+    loot: [
+      { name: "Titanium", max: 300 },
+      { name: "Titanium", max: 300 },
+      { name: "Purpleheart", max: 100 },
+      { name: "Silk", max: 100 },
+    ],
+  },
+  {
+    tier: 3,
+    name: "Purpleheart Treant",
+    atk: 50,
+    aspd: 1000,
+    chp: 3000,
+    mhp: 3000,
+    xp: 600,
+    loot: [
+      { name: "Titanium", max: 100 },
+      { name: "Purpleheart", max: 300 },
+      { name: "Purpleheart", max: 300 },
+      { name: "Silk", max: 100 },
+    ],
+  },
+  {
+    tier: 3,
+    name: "Egregiously Large Worm",
+    atk: 50,
+    aspd: 1000,
+    chp: 3000,
+    mhp: 3000,
+    xp: 600,
+    loot: [
+      { name: "Titanium", max: 100 },
+      { name: "Purpleheart", max: 300 },
+      { name: "Silk", max: 300 },
+      { name: "Silk", max: 300 },
     ],
   },
 ];
@@ -251,6 +488,12 @@ class Game extends React.Component {
         { name: "Bronze", amount: 0 },
         { name: "Redwood", amount: 0 },
         { name: "Cotton", amount: 0 },
+        { name: "Steel", amount: 0 },
+        { name: "Maple", amount: 0 },
+        { name: "Cashmere", amount: 0 },
+        { name: "Titanium", amount: 0 },
+        { name: "Purpleheart", amount: 0 },
+        { name: "Silk", amount: 0 },
       ],
       tier: 0, //highest unlocked tier
       settingsMenu: { open: false, sound: true, music: true },
@@ -300,6 +543,7 @@ class Game extends React.Component {
         {fightboxes}
           <div className="menubar">
           {log}
+          {inventoryMenu}
             <div className="menubtns">
             {/* toggle settings - TODO */}
             <button className="settingsbtn">Settings</button>
@@ -320,7 +564,6 @@ class Game extends React.Component {
             </button>
             </div>
           </div>
-          {inventoryMenu}
         </div>
       </div>
     );
@@ -555,8 +798,8 @@ class Fight extends React.Component {
   calculateStats(f) {
     let hero = this.state.hero;
     let equipment = hero.equipment;
-    hero.atk = hero.level;
-    hero.mhp = 100 + 10 * (hero.level - 1);
+    hero.atk = hero.level * 2;
+    hero.mhp = 100 + 20 * (hero.level - 1);
     hero.aspd = Math.floor(1500 * 0.98 ** (hero.level - 1));
     let equipentries = Object.entries(equipment);
     for (let i = 0; i < 5; i++) {
@@ -695,7 +938,6 @@ class Fight extends React.Component {
         {
           hero: hero,
           equipTT: false,
-          equipmentMenu: false,
         },
         () => {
           this.props.buyUpgrade(item.upcost[0], item.upcost[1], equipment);

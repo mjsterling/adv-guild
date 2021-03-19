@@ -16,10 +16,13 @@ ul {
 .inventorymenu  {
   display: flex;
   flex-flow: column wrap;
-  height: 7%;
+  height: 100%;
   justify-content: flex-start;
   align-items: space-around;
-  align-content: space-around;
+  align-content: flex-end;
+  overflow-x: hidden;
+  font-size: 1.65vh;
+  width: 100%;
 }
 
 .inventorymenu > * {
@@ -101,7 +104,7 @@ ol {
   width: 100%;
   color: white;
   font-weight: bold;
-  font-size: 1.6vh;
+  font-size: 1.3vh;
 }
 
 
@@ -138,7 +141,7 @@ ol {
 }
 .log {
   width: 100%;
-  height: 50%;
+  height: 48%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
@@ -149,17 +152,22 @@ ol {
 }
 
 .logitem {
-  font-size: 2vh;
+  font-size: 1.5vh;
 }
 
 .monstermenu {
-  height: 50%;
-  width: 50%;
+  height: 70%;
+  width: 90%;
   position: fixed;
-  left: 40%;
+  left: 0%;
   top: 10%;
   background: lightgreen;
   border: 1px solid black;
+  z-index: 2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column nowrap;
 }
 
 .closemenu {
@@ -169,10 +177,10 @@ ol {
 
 .monsterbtns {
   display: flex;
-  flex-flow: column wrap;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: space-evenly;
+  align-content: space-evenly;
 }
 
 .monsterbtns button {
@@ -181,10 +189,10 @@ ol {
 }
 
 .equipmentmenu {
-  height: 50%;
-  width: 50%;
+  height: 70%;
+  width: 70%;
   position: fixed;
-  left: 40%;
+  left: 10%;
   top: 10%;
   background: lightgreen;
   border: 1px solid black;
@@ -201,7 +209,6 @@ ol {
   justify-content: space-evenly;
   align-items: space-evenly;
   align-content: space-evenly;
-  height: 40%;
 }
 
 .equipbtns button {
