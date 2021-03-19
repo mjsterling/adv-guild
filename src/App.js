@@ -6,7 +6,7 @@ const items = [
     tier: 0,
     type: "weapon",
     name: "Fists",
-    atk: 1,
+    atk: 0,
     mhp: 0,
     aspd: 1,
     upcost: ["Aluminium", 20],
@@ -248,8 +248,8 @@ const monsters = [
   {
     tier: 0,
     name: "Aluminium Golem",
-    atk: 2,
-    aspd: 2000,
+    atk: 1,
+    aspd: 1000,
     chp: 20,
     mhp: 20,
     xp: 20,
@@ -263,8 +263,8 @@ const monsters = [
   {
     tier: 0,
     name: "Balsa Treant",
-    atk: 2,
-    aspd: 2000,
+    atk: 1,
+    aspd: 1000,
     chp: 20,
     mhp: 20,
     xp: 20,
@@ -279,8 +279,8 @@ const monsters = [
   {
     tier: 0,
     name: "Sentient Jute",
-    atk: 2,
-    aspd: 2000,
+    atk: 1,
+    aspd: 1000,
     chp: 20,
     mhp: 20,
     xp: 20,
@@ -294,9 +294,9 @@ const monsters = [
   },
   {
     tier: 1,
-    name: "Corvus the Mighty",
-    atk: 10,
-    aspd: 1500,
+    name: "The Inamicable",
+    atk: 5,
+    aspd: 750,
     chp: 400,
     mhp: 400,
     xp: 120,
@@ -309,8 +309,8 @@ const monsters = [
   {
     tier: 1,
     name: "Bronze Golem",
-    atk: 10,
-    aspd: 2000,
+    atk: 5,
+    aspd: 1000,
     chp: 200,
     mhp: 200,
     xp: 60,
@@ -324,8 +324,8 @@ const monsters = [
   {
     tier: 1,
     name: "Redwood Treant",
-    atk: 10,
-    aspd: 2000,
+    atk: 5,
+    aspd: 1000,
     chp: 200,
     mhp: 200,
     xp: 60,
@@ -339,8 +339,8 @@ const monsters = [
   {
     tier: 1,
     name: "Sentient Cotton",
-    atk: 10,
-    aspd: 2000,
+    atk: 5,
+    aspd: 1000,
     chp: 200,
     mhp: 200,
     xp: 60,
@@ -354,10 +354,10 @@ const monsters = [
   {
     tier: 2,
     name: "The Indomitable",
-    atk: 50,
-    aspd: 1500,
-    chp: 1200,
-    mhp: 1200,
+    atk: 10,
+    aspd: 500,
+    chp: 1000,
+    mhp: 1000,
     xp: 300,
     loot: [
       { name: "Bronze", max: 100 },
@@ -368,8 +368,8 @@ const monsters = [
   {
     tier: 2,
     name: "Steel Golem",
-    atk: 30,
-    aspd: 2000,
+    atk: 15,
+    aspd: 1000,
     chp: 600,
     mhp: 600,
     xp: 120,
@@ -383,8 +383,8 @@ const monsters = [
   {
     tier: 2,
     name: "Maple Treant",
-    atk: 30,
-    aspd: 200,
+    atk: 15,
+    aspd: 1000,
     chp: 600,
     mhp: 600,
     xp: 120,
@@ -398,8 +398,8 @@ const monsters = [
   {
     tier: 2,
     name: "Very Angry Goat",
-    atk: 30,
-    aspd: 2000,
+    atk: 15,
+    aspd: 1000,
     chp: 600,
     mhp: 600,
     xp: 120,
@@ -464,7 +464,7 @@ const monsters = [
     xp: 600,
     loot: [
       { name: "Titanium", max: 100 },
-      { name: "Purpleheart", max: 300 },
+      { name: "Purpleheart", max: 100 },
       { name: "Silk", max: 300 },
       { name: "Silk", max: 300 },
     ],
@@ -879,6 +879,7 @@ class Fight extends React.Component {
             {"HP: " + monster.chp + " / " + monster.mhp}
           </div>
         </div>
+        <div className="monsterxp"></div>
         <button
           className="monsterbtn"
           onClick={() =>
