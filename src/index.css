@@ -104,7 +104,7 @@ ol {
   height: 667px;
   width: 375px;
   padding: 40px 10px 2px 10px;
-  background-color: rgba(70, 70, 70, 1);
+  background-color: rgb(0, 85, 141);
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
@@ -113,7 +113,7 @@ ol {
   color: white;
 }
 
-.fightcontainer {
+.fightcontainer { 
   height: 70%;
   width: 100%;
   display: flex;
