@@ -88,7 +88,7 @@ const items = [
     name: "Aluminium Helm",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Bronze", 100],
   },
   {
@@ -98,7 +98,7 @@ const items = [
     name: "Aluminium Cuirass",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Bronze", 100],
   },
   {
@@ -108,7 +108,7 @@ const items = [
     name: "Aluminium Tasset",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Bronze", 100],
   },
   {
@@ -118,7 +118,7 @@ const items = [
     name: "Aluminium Sabatons",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Bronze", 100],
   },
   {
@@ -138,7 +138,7 @@ const items = [
     name: "Bronze Vambraces",
     atk: 4,
     mhp: 50,
-    aspd: 0.8,
+    aspd: 0.9,
     upcost: ["Steel", 1000],
   },
   {
@@ -148,7 +148,7 @@ const items = [
     name: "Bronze Helm",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Steel", 1000],
   },
   {
@@ -158,7 +158,7 @@ const items = [
     name: "Bronze Cuirass",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Steel", 1000],
   },
   {
@@ -168,7 +168,7 @@ const items = [
     name: "Bronze Tasset",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Steel", 1000],
   },
   {
@@ -178,7 +178,7 @@ const items = [
     name: "Bronze Sabatons",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Steel", 1000],
   },
   {
@@ -198,7 +198,7 @@ const items = [
     name: "Steel Vambraces",
     atk: 10,
     mhp: 150,
-    aspd: 0.7,
+    aspd: 0.85,
     upcost: ["Titanium", 5000],
   },
   {
@@ -208,7 +208,7 @@ const items = [
     name: "Steel Helm",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Titanium", 5000],
   },
   {
@@ -218,7 +218,7 @@ const items = [
     name: "Steel Helm",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Titanium", 5000],
   },
   {
@@ -228,7 +228,7 @@ const items = [
     name: "Steel Cuirass",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Titanium", 5000],
   },
   {
@@ -238,7 +238,7 @@ const items = [
     name: "Steel Tasset",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Titanium", 5000],
   },
   {
@@ -248,7 +248,7 @@ const items = [
     name: "Steel Sabatons",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Titanium", 5000],
   },
   {
@@ -268,7 +268,7 @@ const items = [
     name: "Titanium Vambraces",
     atk: 50,
     mhp: 450,
-    aspd: 0.6,
+    aspd: 0.8,
     upcost: ["Tungsten", 25000],
   },
   {
@@ -278,7 +278,7 @@ const items = [
     name: "Titanium Helm",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Tungsten", 25000],
   },
   {
@@ -288,7 +288,7 @@ const items = [
     name: "Titanium Cuirass",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Tungsten", 25000],
   },
   {
@@ -298,7 +298,7 @@ const items = [
     name: "Titanium Tasset",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Tungsten", 25000],
   },
   {
@@ -308,7 +308,7 @@ const items = [
     name: "Titanium Sabatons",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Tungsten", 25000],
   },
 
@@ -400,7 +400,7 @@ const items = [
     name: "Leather Coif",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Snakehide", 100],
   },
   {
@@ -410,7 +410,7 @@ const items = [
     name: "Leather Armour",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Snakehide", 100],
   },
   {
@@ -420,7 +420,7 @@ const items = [
     name: "Leather Greaves",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Snakehide", 100],
   },
   {
@@ -430,7 +430,7 @@ const items = [
     name: "Leather Sandals",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Snakehide", 100],
   },
   {
@@ -450,7 +450,7 @@ const items = [
     name: "Snakehide Bracers",
     atk: 4,
     mhp: 50,
-    aspd: 0.8,
+    aspd: 0.9,
     upcost: ["Crocodile Skin", 1000],
   },
   {
@@ -460,7 +460,7 @@ const items = [
     name: "Snakehide Coif",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Crocodile Skin", 1000],
   },
   {
@@ -470,7 +470,7 @@ const items = [
     name: "Snakehide Armour",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Crocodile Skin", 1000],
   },
   {
@@ -480,7 +480,7 @@ const items = [
     name: "Snakehide Greaves",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Crocodile Skin", 1000],
   },
   {
@@ -490,7 +490,7 @@ const items = [
     name: "Snakehide Boots",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Crocodile Skin", 1000],
   },
   {
@@ -510,17 +510,7 @@ const items = [
     name: "Crocodile Bracers",
     atk: 10,
     mhp: 150,
-    aspd: 0.7,
-    upcost: ["Drakeskin", 5000],
-  },
-  {
-    tier: 3,
-    class: "Hunter",
-    type: "helmet",
-    name: "Steel Helm",
-    atk: 5,
-    mhp: 300,
-    aspd: 0.9,
+    aspd: 0.85,
     upcost: ["Drakeskin", 5000],
   },
   {
@@ -530,7 +520,7 @@ const items = [
     name: "Crocodile Coif",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Drakeskin", 5000],
   },
   {
@@ -540,7 +530,7 @@ const items = [
     name: "Crocodile Armour",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Drakeskin", 5000],
   },
   {
@@ -550,7 +540,7 @@ const items = [
     name: "Crocodile Greaves",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Drakeskin", 5000],
   },
   {
@@ -560,7 +550,7 @@ const items = [
     name: "Crocodile Boots",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Drakeskin", 5000],
   },
   {
@@ -580,7 +570,7 @@ const items = [
     name: "Drakeskin Bracers",
     atk: 50,
     mhp: 450,
-    aspd: 0.6,
+    aspd: 0.8,
     upcost: ["Dragonhide", 25000],
   },
   {
@@ -590,7 +580,7 @@ const items = [
     name: "Drakeskin Coif",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Dragonhide", 25000],
   },
   {
@@ -600,7 +590,7 @@ const items = [
     name: "Drakeskin Armour",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Dragonhide", 25000],
   },
   {
@@ -610,7 +600,7 @@ const items = [
     name: "Drakeskin Greaves",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Dragonhide", 25000],
   },
   {
@@ -620,7 +610,7 @@ const items = [
     name: "Drakeskin Boots",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Dragonhide", 25000],
   },
   // wizard gear
@@ -711,7 +701,7 @@ const items = [
     name: "Jute Hat",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Cotton", 100],
   },
   {
@@ -721,7 +711,7 @@ const items = [
     name: "Jute Robes",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Cotton", 100],
   },
   {
@@ -731,7 +721,7 @@ const items = [
     name: "Jute Robeskirt",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Cotton", 100],
   },
   {
@@ -741,7 +731,7 @@ const items = [
     name: "Leather Shoes",
     atk: 1,
     mhp: 25,
-    aspd: 0.95,
+    aspd: 0.98,
     upcost: ["Snakehide", 100],
   },
   {
@@ -761,7 +751,7 @@ const items = [
     name: "Cotton Gloves",
     atk: 4,
     mhp: 50,
-    aspd: 0.8,
+    aspd: 0.9,
     upcost: ["Cashmere", 1000],
   },
   {
@@ -771,7 +761,7 @@ const items = [
     name: "Cotton Hat",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Cashmere", 1000],
   },
   {
@@ -781,7 +771,7 @@ const items = [
     name: "Cotton Robes",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Cashmere", 1000],
   },
   {
@@ -791,7 +781,7 @@ const items = [
     name: "Cotton Robeskirt",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Cashmere", 1000],
   },
   {
@@ -801,7 +791,7 @@ const items = [
     name: "Snakehide Shoes",
     atk: 2,
     mhp: 75,
-    aspd: 0.9,
+    aspd: 0.96,
     upcost: ["Crocodile Skin", 1000],
   },
   {
@@ -821,7 +811,7 @@ const items = [
     name: "Cashmere Gloves",
     atk: 10,
     mhp: 150,
-    aspd: 0.7,
+    aspd: 0.85,
     upcost: ["Silk", 5000],
   },
   {
@@ -831,7 +821,7 @@ const items = [
     name: "Cashmere Hat",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Silk", 5000],
   },
   {
@@ -841,7 +831,7 @@ const items = [
     name: "Cashmere Robes",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Silk", 5000],
   },
   {
@@ -851,7 +841,7 @@ const items = [
     name: "Cashmere Robeskirt",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Silk", 5000],
   },
   {
@@ -861,7 +851,7 @@ const items = [
     name: "Crocodile Shoes",
     atk: 5,
     mhp: 300,
-    aspd: 0.9,
+    aspd: 0.94,
     upcost: ["Drakeskin", 5000],
   },
   {
@@ -881,7 +871,7 @@ const items = [
     name: "Silk Gloves",
     atk: 50,
     mhp: 450,
-    aspd: 0.6,
+    aspd: 0.8,
     upcost: ["Vicu\xF1a", 25000],
   },
   {
@@ -891,7 +881,7 @@ const items = [
     name: "Silk Hat",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Vicu\xF1a", 25000],
   },
   {
@@ -901,7 +891,7 @@ const items = [
     name: "Silk Robe",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Vicu\xF1a", 25000],
   },
   {
@@ -911,7 +901,7 @@ const items = [
     name: "Silk Robeskirt",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Vicu\xF1a", 25000],
   },
   {
@@ -921,7 +911,7 @@ const items = [
     name: "Drakeskin Shoes",
     atk: 10,
     mhp: 750,
-    aspd: 0.85,
+    aspd: 0.92,
     upcost: ["Dragonhide", 25000],
   },
 ];

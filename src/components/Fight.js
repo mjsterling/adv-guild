@@ -13,11 +13,7 @@ const recoveringMsgs = [
   "Twiddling thumbs... ",
 ];
 
-var heroatk;
-var monsteratk;
-
 class Fight extends React.Component {
-
   constructor(props) {
     super(props);
     let id = this.props.heroId;
@@ -25,8 +21,8 @@ class Fight extends React.Component {
       hero: {
         id: id,
         name: "\xa0",
-        atk: 0,
-        aspd: 1000,
+        atk: 2,
+        aspd: 2000,
         chp: 100,
         mhp: 100,
         cxp: 0,
@@ -60,7 +56,6 @@ class Fight extends React.Component {
       heroatk: null,
       monsteratk: null,
     };
-
   }
 
   componentDidMount() {
@@ -105,7 +100,7 @@ class Fight extends React.Component {
     hero.equipment.gloves = localStorage.getItem(hero.id + "gloves")
       ? parseInt(localStorage.getItem(hero.id + "gloves"), 10)
       : 0;
-    hero.equipment.gloves = localStorage.getItem(hero.id + "boots")
+    hero.equipment.boots = localStorage.getItem(hero.id + "boots")
       ? parseInt(localStorage.getItem(hero.id + "boots"), 10)
       : 0;
     this.setState({
@@ -126,6 +121,7 @@ class Fight extends React.Component {
     localStorage.setItem(hero.id + "body", hero.equipment.body);
     localStorage.setItem(hero.id + "legs", hero.equipment.legs);
     localStorage.setItem(hero.id + "gloves", hero.equipment.gloves);
+    localStorage.setItem(hero.id + "boots", hero.equipment.boots);
   }
 
   calculateStats(f) {
@@ -155,6 +151,7 @@ class Fight extends React.Component {
             x.tier === equipentries[i][1] &&
             x.class === hero.name
         ).aspd;
+        console.log(hero);
       }
       this.setState({ hero: hero }, () => (f ? this.fight() : null));
     }
@@ -163,37 +160,22 @@ class Fight extends React.Component {
   render() {
     const hero = this.state.hero;
     const monster = this.state.monster;
-    let herochp = hero.chp < 1 ? 0 : hero.chp;
-    let monsterchp = monster.chp < 1 ? 0 : monster.chp;
+    const herochp = hero.chp < 1 ? 0 : hero.chp;
+    const monsterchp = monster.chp < 1 ? 0 : monster.chp;
     const herohppc = Math.trunc((herochp / hero.mhp) * 100);
     const heroxppc = Math.trunc((hero.cxp / hero.mxp) * 100);
     const monsterhppc = monster.mhp
       ? Math.trunc((monsterchp / monster.mhp) * 100)
       : 0;
-    let monsterMenu = null;
-    // const tiersUnlocked = this.props.tiersUnlocked;
-    if (this.state.monsterMenu) {
-      monsterMenu = this.monsterMenu();
-    }
-    let equipmentMenu = null;
-    if (this.state.equipmentMenu) {
-      equipmentMenu = this.equipmentMenu();
-    }
-    let equipTT = null;
-    if (this.state.equipTT) {
-      equipTT = this.openequipTT();
-    }
-    let herodead = null;
-    if (this.state.heroDead) {
-      herodead = this.heroDead();
-    }
-    let chooseClass = null;
-    if (hero.name == "\xa0") {
-      chooseClass = this.chooseClass();
-    }
+    const monsterMenu = this.state.monsterMenu ? this.monsterMenu() : null;
+    const equipmentMenu = this.state.equipmentMenu
+      ? this.equipmentMenu()
+      : null;
+    const equipTT = this.state.equipTT ? this.openequipTT() : null;
+    const herodead = this.state.heroDead ? this.heroDead() : null;
+    const chooseClass = hero.name === "\xa0" ? this.chooseClass() : null;
     return (
       <div className="fight">
-        {chooseClass}
         <div className="heroname">{hero.name}</div>
         <div className="hpcontainer">
           <div className="herohpbar" style={{ width: herohppc + "%" }}></div>
@@ -233,6 +215,7 @@ class Fight extends React.Component {
         >
           {monster.name}
         </button>
+        {chooseClass}
         {monsterMenu}
         {equipmentMenu}
         {equipTT}
@@ -280,18 +263,16 @@ class Fight extends React.Component {
           itemtier={itemtier}
           itemtype={itemtype}
           upgrade={() => this.upgradeItem(itemtier, itemtype)}
-          close={() => this.closeMenu()}
+          close={() =>
+            this.setState({
+              equipTT: false,
+            })
+          }
           name={this.state.hero.name}
         />
         ;
       </div>
     );
-  }
-  //TODO use this to close the rest of your menus
-  closeMenu(i) {
-    this.setState({
-      equipTT: false,
-    });
   }
 
   upgradeItem(itemtier, itemtype) {
@@ -411,15 +392,18 @@ class Fight extends React.Component {
   }
 
   fight() {
-    clearInterval(heroatk);
-    clearInterval(monsteratk);
-    heroatk = setInterval(() => {
+    clearInterval(this.state.heroatk);
+    clearInterval(this.state.monsteratk);
+    const heroatk = setInterval(() => {
       let monsterc = this.state.monster;
       monsterc.chp = monsterc.chp - this.state.hero.atk;
       if (this.state.monster.chp < 1) {
         clearInterval(heroatk);
         clearInterval(monsteratk);
-        this.props.monsterDrop(this.state.monster.loot, this.state.monster.name);
+        this.props.monsterDrop(
+          this.state.monster.loot,
+          this.state.monster.name
+        );
         this.monsterdeath(this.state.monster.xp);
       } else {
         this.setState({
@@ -428,38 +412,35 @@ class Fight extends React.Component {
       }
     }, this.state.hero.aspd);
 
-    monsteratk = setInterval(() => {
-        let heroc = this.state.hero;
-        heroc.chp = heroc.chp - this.state.monster.atk;
-        if (heroc.chp < 1) {
-      clearInterval(heroatk);
-      clearInterval(monsteratk);
-      let deathMsg =
-        recoveringMsgs[Math.floor(Math.random() * recoveringMsgs.length)];
-      this.setState(
-        {
-          hero: heroc,
-          heroDead: true,
-          deathTimer: 10,
-          deathMsg: deathMsg,
-          monster: {
-            id: null,
-            name: "Select Enemy",
-            atk: null,
-            aspd: null,
-            chp: 0,
-            mhp: 0,
-            loot: null,
+    const monsteratk = setInterval(() => {
+      let hero = this.state.hero;
+      hero.chp = hero.chp - this.state.monster.atk;
+      if (hero.chp < 1) {
+        clearInterval(this.state.heroatk);
+        clearInterval(this.state.monsteratk);
+        let deathMsg =
+          recoveringMsgs[Math.floor(Math.random() * recoveringMsgs.length)];
+          let monster = this.state.monster;
+        this.setState(
+          {
+            hero: hero,
+            monster: monster,
+            heroDead: true,
+            deathTimer: 10,
+            deathMsg: deathMsg,
           },
-        },
-        () => this.deathTimer()
-      );
-    } else {
-      this.setState({
-        hero: heroc,
-      });
-    }
-  }, this.state.monster.aspd);
+          () => this.deathTimer()
+        );
+      } else {
+        this.setState({
+          hero: hero,
+        });
+      }
+    }, this.state.monster.aspd);
+    this.setState({
+      heroatk: heroatk,
+      monsteratk: monsteratk,
+    });
   }
 
   deathTimer() {
@@ -468,7 +449,7 @@ class Fight extends React.Component {
         clearInterval(timer);
         let heroc = this.state.hero;
         heroc.chp = heroc.mhp;
-        this.setState({ heroDead: false, hero: heroc });
+        this.setState({ heroDead: false, hero: heroc }, () => this.fight());
       }
       this.setState({ deathTimer: this.state.deathTimer - 1 });
     }, 1000);

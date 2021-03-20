@@ -115,7 +115,7 @@ const monsters = [
     },
     {
       tier: 1,
-      name: "Redwood Treant",
+      name: "Gargantuan Snake",
       atk: 5,
       aspd: 1000,
       chp: 200,

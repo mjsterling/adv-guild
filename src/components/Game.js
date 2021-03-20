@@ -42,6 +42,8 @@ class Game extends React.Component {
       settingsMenu: { open: false, sound: true, music: true },
       inventoryMenu: false,
       log: [],
+      instructions: true,
+      resetWindow: false,
     };
   }
 
@@ -55,12 +57,15 @@ class Game extends React.Component {
         10
       ) : 0;
     }
+    console.log(localStorage.getItem("instructions"));
+    let instructions = localStorage.getItem("instructions") == "false" ? false : true; 
     tier = localStorage.getItem("tier")
       ? parseInt(localStorage.getItem("tier"), 10)
       : 0;
     this.setState({
       inventory: inventory,
       tier: tier,
+      instructions: instructions,
     });
   }
 
@@ -69,33 +74,42 @@ class Game extends React.Component {
     let inventoryMenu = this.state.inventoryMenu ? this.inventoryMenu() : null;
     let fightboxes = this.fightBoxes();
     let log = !this.state.inventoryMenu ? this.printLog() : null;
+    let resetWindow = this.state.resetWindow ? this.resetWindow() : null;
+    let instructions = this.state.instructions ? this.instructions() : null;
+    let inventoryBtnText = this.state.inventoryMenu ? "Log" : "Inventory";
     return (
       <div>
         <div className="container">
         <div className="fightcontainer">{fightboxes}</div>
         {log}
         {inventoryMenu}
+        {resetWindow}
+        {instructions}
           <div className="menubar">
             <div className="menubtns">
             {/* toggle settings - TODO */}
-            <button className="settingsbtn">Settings</button>
-            <button onClick={() => this.logLocalStorage()}>
-              Console.Log Local Storage
+            {/* <button className="settingsbtn">Settings</button> */}
+            <button onClick={() => this.setState({
+              instructions: true,
+            })}>
+              Instructions
             </button>
-            <button onClick={() => localStorage.clear()}>
-              Clear Local Storage
+            <button onClick={() => this.setState({
+              resetWindow: !this.state.resetWindow,
+            })}>
+              Hard Reset
             </button>
-            {/* toggle inventory */}
             <button
               className="inventorybtn"
               onClick={() =>
                 this.setState({ inventoryMenu: !this.state.inventoryMenu })
               }
             >
-              Inventory
+              {inventoryBtnText}
             </button>
             </div>
           </div>
+          <footer>&copy; Matthew Sterling 2021. Built in React as a learning exercise / passion project. Source code <a href="https://github.com/mjsterling/adv-guild">here</a></footer>
         </div>
       </div>
     );
@@ -108,14 +122,43 @@ class Game extends React.Component {
     for (let i = 0; i < inventory.length; i++) {
       localStorage.setItem(inventory[i].name, inventory[i].amount.toString(10));
     }
+    localStorage.setItem("instructions", this.state.instructions);
+  }
+
+  resetWindow() {
+    return (
+      <div className="resetWindow">
+      <button onClick={() => this.setState({
+        resetWindow: false,
+      })}>Back</button>
+        <p>Warning: This will reset all your progress! Click the below button to confirm:</p>
+        <button onClick={() => {
+          localStorage.clear();
+          window.location.reload(true);
+        }}>HARD RESET</button>
+      </div>
+    )
+  }
+
+  instructions() {
+    return (
+      <div className="instructions">
+        <p>Welcome to Adventurer's Guild Idle RPG!</p>
+        <p>This is a simple idle/management RPG built in React. Your objective is to send heroes to fight monsters,
+          level up, get loot, and spend resources to buy equipment upgrades for your heroes.</p>
+        <p>Choose a class for your first hero to get started!</p>
+        <button onClick={() => this.setState({
+          instructions: false,
+        })}>Close</button>
+      </div>
+    )
   }
 
   fightBoxes() {
     let fights = new Array(this.state.tier + 1);
-    for (let i = 0; i < this.state.tier + 1; i++) {
+    for (let i = 0; i < this.state.tier + 1 && i < 5; i++) {
       fights[i] = this.renderFight(i);
     }
-    console.log(fights);
     return fights;
   }
 
@@ -133,18 +176,7 @@ class Game extends React.Component {
   /> 
     )
   }
-  logLocalStorage() {
-    //development button only - TODO remove for production
-    console.log("local storage");
-    for (let i = 0; i < localStorage.length; i++) {
-      console.log(
-        localStorage.key(i) +
-          "=[" +
-          localStorage.getItem(localStorage.key(i)) +
-          "]"
-      );
-    }
-  }
+
   printLog() {
     let log = Array(this.state.log.length);
     for (let i = 0; i < log.length; i++) {
