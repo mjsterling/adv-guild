@@ -14,15 +14,18 @@ ul {
 }
 
 .inventorymenu  {
-  display: flex;
-  flex-flow: column wrap;
-  height: 100%;
-  justify-content: flex-start;
-  align-items: space-around;
-  align-content: flex-end;
-  overflow: hidden;
-  font-size: 13px;
   width: 100%;
+  height: 10%;
+  display: flex;
+  padding: 1%;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: flex-end;
+  margin: auto 0 0 0;
+  overflow: hidden;
+  text-align: center;
+  font-size: 13px;
 }
 
 .inventorymenu > * {
@@ -38,7 +41,7 @@ ol {
   height: 667px;
   width: 375px;
   padding: 10px;
-  background-color: skyblue;
+  background-color: rgba(135, 206, 235, 0.6);
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-end;
@@ -46,30 +49,43 @@ ol {
   font-size: 16px;
 }
 
+.fightcontainer {
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
 .fight {
   width: 100%;
-  height: 15%;
-  margin: auto;
+  height: 20%;
+  margin: 2% auto;
   position: relative;
   display: flex;
+  color: black;
   border: 1px solid black;
   flex-flow: column wrap;
   align-items: center;
   align-content: space-evenly;
+  font-size: 13px;
+  background: linear-gradient(to bottom, skyblue 0%, rgb(228, 254, 255) 82%, green 90%, brown 97%);
 }
 
 .fight button {
-  height: 50%;
-  width: 25%;
+  height: 40%;
+  width: 22%;
+  margin: 0 auto;
+  font-size: 12px;
 }
 
 .hpcontainer {
   width: 40%;
-  height: 15%;
+  height: 14%;
   border: 1px solid black;
   background: darkgray;
   display: flex;
-  justify-content: flex start;
+  justify-content: flex-start;
   align-items: center;
   position: relative;
 }
@@ -88,7 +104,7 @@ ol {
   width: 100%;
   color: white;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 10px;
 }
 
 .heroxpbar {
@@ -123,23 +139,17 @@ ol {
   width: 100%;
   color: white;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 10px;
 }
 
 .monsterxp {
   width: 40%;
   height: 15%;
-  border: 1px solid black;
-  background: darkgray;
-  display: flex;
-  justify-content: flex start;
-  align-items: center;
   position: relative;
   opacity: 0;
   }
 
 .menubtns {
-  height: 50%;
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
@@ -149,24 +159,25 @@ ol {
 }
 
 .menubar {
-  height: 20%;
+  height: 6%;
   display: flex;
   flex-flow: column nowrap;
 }
+
 .log {
   width: 100%;
-  height: 48%;
+  height: 10%;
   display: flex;
+  padding: 1%;
   flex-flow: column nowrap;
   justify-content: flex-end;
-  padding: 1%;
   margin: auto 0 0 0;
   overflow: hidden;
   text-align: center;
 }
 
 .logitem {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .monstermenu {
@@ -174,7 +185,7 @@ ol {
   width: 90%;
   position: absolute;
   left: 5%;
-  top: -50%;
+  top: 0%;
   background: lightgreen;
   border: 1px solid black;
   z-index: 2;
@@ -200,7 +211,8 @@ ol {
 
 .monsterbtns button {
   height: 50px;
-  width: 75px;
+  width: 60px;
+  font-size: 11px;
 }
 
 .equipmentmenu {
@@ -208,7 +220,7 @@ ol {
   width: 90%;
   position: absolute;
   left: 5%;
-  top: -50%;
+  top: 0%;
   background: lightgreen;
   border: 1px solid black;
   z-index: 2;
@@ -230,7 +242,7 @@ ol {
 
 .equipbtns button {
   height: 8vh;
-  width: 8vh;
+  width: 100px;
 }
 
 .equipttbtns {
@@ -243,8 +255,8 @@ ol {
 
 .equipttbtns button {
   margin-top: 5%;
-  height: 8vh;
-  width: 10vh;
+  height: 10%;
+  width: 50%;
 }
 
 .equipTT {
@@ -252,7 +264,7 @@ ol {
   width: 90%;
   position: absolute;
   left: 5%;
-  top: -50%;
+  top: 0%;
   background: lightgreen;
   border: 1px solid black;
   z-index: 3;
@@ -265,11 +277,33 @@ ol {
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(170, 170, 170, 0.5);
+  background: rgba(170, 170, 170, 0.8);
   z-index: 1;
   color: white;
-  font-size: 3vh;
+  font-size: 2vh;
   font-weight: bold;
   text-align: center;
   padding: 10% 0;
+}
+
+.chooseclass {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(170, 170, 170, 0.7);
+    z-index: 1;
+    color: white;
+    font-size: 2vh;
+    font-weight: normal;
+    text-align: center;
+    padding: 2% 0;
+    font-size: 18px;
+}
+
+.chooseclassbtns button {
+  width: 25%;
+  height: 50px;
+  margin: 2px 5px;
 }
