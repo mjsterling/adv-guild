@@ -1,5 +1,4 @@
 const items = [
-
   {
     //warrior gear
     tier: 0,

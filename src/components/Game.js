@@ -1,5 +1,5 @@
 import React from "react";
-import Fight from "./Fight.js"
+import Fight from "./Fight.js";
 
 const monsterDeathMsgs = [
   " has kicked the bucket.",
@@ -7,8 +7,8 @@ const monsterDeathMsgs = [
   " was discorporated.",
   " departed the realm.",
   " has left the building.",
-  " shuffled off this mortal coil."
-]
+  " shuffled off this mortal coil.",
+];
 
 class Game extends React.Component {
   constructor(props) {
@@ -52,13 +52,13 @@ class Game extends React.Component {
     let inventory = this.state.inventory;
     let tier = this.state.tier;
     for (let i = 0; i < inventory.length; i++) {
-      inventory[i].amount = localStorage.getItem(inventory[i].name) ? parseInt(
-        localStorage.getItem(inventory[i].name),
-        10
-      ) : 0;
+      inventory[i].amount = localStorage.getItem(inventory[i].name)
+        ? parseInt(localStorage.getItem(inventory[i].name), 10)
+        : 0;
     }
     console.log(localStorage.getItem("instructions"));
-    let instructions = localStorage.getItem("instructions") == "false" ? false : true; 
+    let instructions =
+      localStorage.getItem("instructions") == "false" ? false : true;
     tier = localStorage.getItem("tier")
       ? parseInt(localStorage.getItem("tier"), 10)
       : 0;
@@ -80,36 +80,48 @@ class Game extends React.Component {
     return (
       <div>
         <div className="container">
-        <div className="fightcontainer">{fightboxes}</div>
-        {log}
-        {inventoryMenu}
-        {resetWindow}
-        {instructions}
+          <div className="fightcontainer">{fightboxes}</div>
+          {log}
+          {inventoryMenu}
+          {resetWindow}
+          {instructions}
           <div className="menubar">
             <div className="menubtns">
-            {/* toggle settings - TODO */}
-            {/* <button className="settingsbtn">Settings</button> */}
-            <button onClick={() => this.setState({
-              instructions: true,
-            })}>
-              Instructions
-            </button>
-            <button onClick={() => this.setState({
-              resetWindow: !this.state.resetWindow,
-            })}>
-              Hard Reset
-            </button>
-            <button
-              className="inventorybtn"
-              onClick={() =>
-                this.setState({ inventoryMenu: !this.state.inventoryMenu })
-              }
-            >
-              {inventoryBtnText}
-            </button>
+              {/* toggle settings - TODO */}
+              {/* <button className="settingsbtn">Settings</button> */}
+              <button
+                onClick={() =>
+                  this.setState({
+                    instructions: true,
+                  })
+                }
+              >
+                Instructions
+              </button>
+              <button
+                onClick={() =>
+                  this.setState({
+                    resetWindow: !this.state.resetWindow,
+                  })
+                }
+              >
+                Hard Reset
+              </button>
+              <button
+                className="inventorybtn"
+                onClick={() =>
+                  this.setState({ inventoryMenu: !this.state.inventoryMenu })
+                }
+              >
+                {inventoryBtnText}
+              </button>
             </div>
           </div>
-          <footer>&copy; Matthew Sterling 2021. Built in React as a learning exercise / passion project. Source code <a href="https://github.com/mjsterling/adv-guild">here</a></footer>
+          <footer>
+            &copy; Matthew Sterling 2021. Built in React as a learning exercise
+            / passion project. Source code{" "}
+            <a href="https://github.com/mjsterling/adv-guild">here</a>
+          </footer>
         </div>
       </div>
     );
@@ -128,30 +140,52 @@ class Game extends React.Component {
   resetWindow() {
     return (
       <div className="resetWindow">
-      <button onClick={() => this.setState({
-        resetWindow: false,
-      })}>Back</button>
-        <p>Warning: This will reset all your progress! Click the below button to confirm:</p>
-        <button onClick={() => {
-          localStorage.clear();
-          window.location.reload(true);
-        }}>HARD RESET</button>
+        <button
+          onClick={() => {
+            localStorage.clear();
+            window.location.reload(true);
+          }}
+        >
+          HARD RESET
+        </button>
+        <p>
+          Warning: This will reset all your progress! Click the below button to
+          confirm:
+        </p>
+        <button
+          onClick={() =>
+            this.setState({
+              resetWindow: false,
+            })
+          }
+        >
+          Back
+        </button>
       </div>
-    )
+    );
   }
 
   instructions() {
     return (
       <div className="instructions">
         <p>Welcome to Adventurer's Guild Idle RPG!</p>
-        <p>This is a simple idle/management RPG built in React. Your objective is to send heroes to fight monsters,
-          level up, get loot, and spend resources to buy equipment upgrades for your heroes.</p>
+        <p>
+          This is a simple idle/management RPG built in React. Your objective is
+          to send heroes to fight monsters, level up, get loot, and spend
+          resources to buy equipment upgrades for your heroes.
+        </p>
         <p>Choose a class for your first hero to get started!</p>
-        <button onClick={() => this.setState({
-          instructions: false,
-        })}>Close</button>
+        <button
+          onClick={() =>
+            this.setState({
+              instructions: false,
+            })
+          }
+        >
+          Close
+        </button>
       </div>
-    )
+    );
   }
 
   fightBoxes() {
@@ -165,16 +199,16 @@ class Game extends React.Component {
   renderFight(i) {
     return (
       <Fight
-      key={i}
-      className="fight"
-      heroId={i}
-      monsterDrop={this.monsterDrop}
-      inventory={this.state.inventory}
-      buyUpgrade={this.buyUpgrade}
-      logLevel={this.logLevel}
-      tier={this.state.tier}
-  /> 
-    )
+        key={i}
+        className="fight"
+        heroId={i}
+        monsterDrop={this.monsterDrop}
+        inventory={this.state.inventory}
+        buyUpgrade={this.buyUpgrade}
+        logLevel={this.logLevel}
+        tier={this.state.tier}
+      />
+    );
   }
 
   printLog() {
@@ -184,11 +218,9 @@ class Game extends React.Component {
     }
     return <ul className="log">{log}</ul>;
   }
-  
+
   renderLog(i) {
-    return <LogItem
-              key={i}
-              content={this.state.log[i]} />
+    return <LogItem key={i} content={this.state.log[i]} />;
   }
   //generate inventory items only if their amount > 0 and return JSX element
   inventoryMenu() {
@@ -213,21 +245,32 @@ class Game extends React.Component {
     let dropid = Math.floor(Math.random() * loot.length);
     let drop = loot[dropid].name;
     let dropamount = Math.floor(Math.random() * loot[dropid].max) + 1;
-    let stockpile = inventory.find(x => x.name === drop).amount;
+    let stockpile = inventory.find((x) => x.name === drop).amount;
     stockpile += dropamount;
-    log.push(monster + monsterDeathMsgs[Math.floor(Math.random() * monsterDeathMsgs.length)] + " Loot: " + dropamount + " " + drop)
-    inventory.splice(inventory.findIndex(x => x.name === drop), 1, {name: drop, amount: stockpile});
+    log.push(
+      monster +
+        monsterDeathMsgs[Math.floor(Math.random() * monsterDeathMsgs.length)] +
+        " Loot: " +
+        dropamount +
+        " " +
+        drop
+    );
+    inventory.splice(
+      inventory.findIndex((x) => x.name === drop),
+      1,
+      { name: drop, amount: stockpile }
+    );
     this.setState({
-       inventory: inventory,
-       log: log,
-       });
+      inventory: inventory,
+      log: log,
+    });
   }
   logLevel(hero) {
     let log = this.state.log;
-    log.push(hero.name + " is now level " + hero.level)
+    log.push(hero.name + " is now level " + hero.level);
     this.setState({
       log: log,
-    })
+    });
   }
   //receives name, cost args from Fight.upgradeItem()
   buyUpgrade(name, cost, equipment) {
@@ -241,8 +284,8 @@ class Game extends React.Component {
     let log = this.state.log;
     if (tier < equipment1[0]) {
       tier++;
-      log.push("A new hero has joined the party!")
-    };
+      log.push("A new hero has joined the party!");
+    }
     this.setState({
       inventory: inventory,
       tier: tier,
@@ -256,7 +299,7 @@ function Inventory(props) {
 }
 
 function LogItem(props) {
-  return <li className="logitem">{props.content}</li>
+  return <li className="logitem">{props.content}</li>;
 }
 // class Settings extends React.Component {
 //   render() {

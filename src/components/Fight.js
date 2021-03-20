@@ -539,7 +539,7 @@ function EquipTT(props) {
       <div key="5">Next Item:</div>
       <li key="6">{newitem.name}</li>
       <li key="7">{"Attack bonus: " + newitem.atk}</li>
-      <li key="8">{"HP bonus: " + + newitem.mhp}</li>
+      <li key="8">{"HP bonus: " + +newitem.mhp}</li>
       <li key="9">
         {"Attack speed boost: " +
           ((1 / newitem.aspd) * 100 - 100).toFixed(0) +
