@@ -67,6 +67,11 @@ ul {
   background:rgba(170, 170, 170, 1);
 }
 
+.instructions button {
+  height: 50px;
+  width: 100px;
+}
+
 .inventorymenu > * {
   padding: 0 5% 0 0;
 }
@@ -108,7 +113,8 @@ ol {
   align-items: center;
   align-content: space-evenly;
   font-size: 13px;
-  background: linear-gradient(to bottom, skyblue 0%, rgb(228, 254, 255) 82%, green 90%, brown 97%);
+  background-image: url(./assets/fightbg.png);
+  background-size: contain;
 }
 
 .fight button {
@@ -230,7 +236,7 @@ ol {
   position: absolute;
   left: 5%;
   top: 0%;
-  background: lightgreen;
+  background: darkgreen;
   border: 1px solid black;
   z-index: 2;
   display: flex;
@@ -286,6 +292,7 @@ ol {
 .equipbtns button {
   height: 8vh;
   width: 100px;
+  margin: 3% 3%;
 }
 
 .equipttbtns {
@@ -298,7 +305,7 @@ ol {
 
 .equipttbtns button {
   margin-top: 5%;
-  height: 10%;
+  height: 50px;
   width: 50%;
 }
 

@@ -270,7 +270,6 @@ class Fight extends React.Component {
           }
           name={this.state.hero.name}
         />
-        ;
       </div>
     );
   }
@@ -420,7 +419,7 @@ class Fight extends React.Component {
         clearInterval(this.state.monsteratk);
         let deathMsg =
           recoveringMsgs[Math.floor(Math.random() * recoveringMsgs.length)];
-          let monster = this.state.monster;
+        let monster = this.state.monster;
         this.setState(
           {
             hero: hero,
@@ -539,11 +538,10 @@ function EquipTT(props) {
       <br />
       <div key="5">Next Item:</div>
       <li key="6">{newitem.name}</li>
-      <li key="7">{"Attack bonus: " + "+" + newitem.atk}</li>
-      <li key="8">{"HP bonus: " + "+" + newitem.mhp}</li>
+      <li key="7">{"Attack bonus: " + newitem.atk}</li>
+      <li key="8">{"HP bonus: " + + newitem.mhp}</li>
       <li key="9">
         {"Attack speed boost: " +
-          "+" +
           ((1 / newitem.aspd) * 100 - 100).toFixed(0) +
           "%"}
       </li>
