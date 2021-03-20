@@ -128,7 +128,7 @@ const items = [
     atk: 10,
     mhp: 25,
     aspd: 0.8,
-    upcost: ["Steel", 2000],
+    upcost: ["Steel", 1000],
   },
   {
     tier: 2,
@@ -138,7 +138,7 @@ const items = [
     atk: 4,
     mhp: 50,
     aspd: 0.9,
-    upcost: ["Steel", 1000],
+    upcost: ["Steel", 500],
   },
   {
     tier: 2,
@@ -148,7 +148,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Steel", 1000],
+    upcost: ["Steel", 500],
   },
   {
     tier: 2,
@@ -158,7 +158,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Steel", 1000],
+    upcost: ["Steel", 500],
   },
   {
     tier: 2,
@@ -168,7 +168,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Steel", 1000],
+    upcost: ["Steel", 500],
   },
   {
     tier: 2,
@@ -178,7 +178,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Steel", 1000],
+    upcost: ["Steel", 500],
   },
   {
     tier: 3,
@@ -440,7 +440,7 @@ const items = [
     atk: 10,
     mhp: 25,
     aspd: 0.8,
-    upcost: ["Maple", 2000],
+    upcost: ["Maple", 1000],
   },
   {
     tier: 2,
@@ -450,7 +450,7 @@ const items = [
     atk: 4,
     mhp: 50,
     aspd: 0.9,
-    upcost: ["Croc Skin", 1000],
+    upcost: ["Croc Skin", 500],
   },
   {
     tier: 2,
@@ -460,7 +460,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Croc Skin", 1000],
+    upcost: ["Croc Skin", 500],
   },
   {
     tier: 2,
@@ -470,7 +470,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Croc Skin", 1000],
+    upcost: ["Croc Skin", 500],
   },
   {
     tier: 2,
@@ -480,7 +480,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Croc Skin", 1000],
+    upcost: ["Croc Skin", 500],
   },
   {
     tier: 2,
@@ -490,7 +490,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Croc Skin", 1000],
+    upcost: ["Croc Skin", 500],
   },
   {
     tier: 3,
@@ -741,7 +741,7 @@ const items = [
     atk: 10,
     mhp: 25,
     aspd: 0.8,
-    upcost: ["Maple", 2000],
+    upcost: ["Maple", 1000],
   },
   {
     tier: 2,
@@ -751,7 +751,7 @@ const items = [
     atk: 4,
     mhp: 50,
     aspd: 0.9,
-    upcost: ["Cashmere", 1000],
+    upcost: ["Cashmere", 500],
   },
   {
     tier: 2,
@@ -761,7 +761,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Cashmere", 1000],
+    upcost: ["Cashmere", 500],
   },
   {
     tier: 2,
@@ -771,7 +771,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Cashmere", 1000],
+    upcost: ["Cashmere", 500],
   },
   {
     tier: 2,
@@ -781,7 +781,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Cashmere", 1000],
+    upcost: ["Cashmere", 500],
   },
   {
     tier: 2,
@@ -791,7 +791,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Croc Skin", 1000],
+    upcost: ["Croc Skin", 500],
   },
   {
     tier: 3,

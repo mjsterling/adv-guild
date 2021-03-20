@@ -11,6 +11,7 @@ const recoveringMsgs = [
   "Composing a ballad... ",
   "Reattaching limbs... ",
   "Twiddling thumbs... ",
+  "Performing open heart surgery...",
 ];
 
 class Fight extends React.Component {
