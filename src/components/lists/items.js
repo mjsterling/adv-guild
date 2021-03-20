@@ -500,7 +500,7 @@ const items = [
     atk: 30,
     mhp: 100,
     aspd: 0.7,
-    upcost: ["Purpleheart", 5000],
+    upcost: ["Purpleheart", 10000],
   },
   {
     tier: 3,
@@ -801,7 +801,7 @@ const items = [
     atk: 30,
     mhp: 100,
     aspd: 0.7,
-    upcost: ["Purpleheart", 5000],
+    upcost: ["Purpleheart", 10000],
   },
   {
     tier: 3,
