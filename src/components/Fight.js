@@ -13,7 +13,11 @@ const recoveringMsgs = [
   "Twiddling thumbs... ",
 ];
 
+var heroatk;
+var monsteratk;
+
 class Fight extends React.Component {
+
   constructor(props) {
     super(props);
     let id = this.props.heroId;
@@ -53,7 +57,10 @@ class Fight extends React.Component {
       equipTTType: null,
       heroDead: false,
       deathMsg: "",
+      heroatk: null,
+      monsteratk: null,
     };
+
   }
 
   componentDidMount() {
@@ -403,27 +410,30 @@ class Fight extends React.Component {
     this.fight();
   }
 
-  heroatk() {
-    let monsterc = this.state.monster;
-    monsterc.chp = monsterc.chp - this.state.hero.atk;
-    if (this.state.monster.chp < 1) {
-      clearInterval(this.heroatk);
-      clearInterval(this.monsteratk);
-      this.props.monsterDrop(this.state.monster.loot, this.state.monster.name);
-      this.monsterdeath(this.state.monster.xp);
-    } else {
-      this.setState({
-        monster: monsterc,
-      });
-    }
-  }
+  fight() {
+    clearInterval(heroatk);
+    clearInterval(monsteratk);
+    heroatk = setInterval(() => {
+      let monsterc = this.state.monster;
+      monsterc.chp = monsterc.chp - this.state.hero.atk;
+      if (this.state.monster.chp < 1) {
+        clearInterval(heroatk);
+        clearInterval(monsteratk);
+        this.props.monsterDrop(this.state.monster.loot, this.state.monster.name);
+        this.monsterdeath(this.state.monster.xp);
+      } else {
+        this.setState({
+          monster: monsterc,
+        });
+      }
+    }, this.state.hero.aspd);
 
-  monsteratk() {
-    let heroc = this.state.hero;
-    heroc.chp = heroc.chp - this.state.monster.atk;
-    if (heroc.chp < 1) {
-      clearInterval(this.heroatk);
-      clearInterval(this.monsteratk);
+    monsteratk = setInterval(() => {
+        let heroc = this.state.hero;
+        heroc.chp = heroc.chp - this.state.monster.atk;
+        if (heroc.chp < 1) {
+      clearInterval(heroatk);
+      clearInterval(monsteratk);
       let deathMsg =
         recoveringMsgs[Math.floor(Math.random() * recoveringMsgs.length)];
       this.setState(
@@ -449,13 +459,7 @@ class Fight extends React.Component {
         hero: heroc,
       });
     }
-  }
-
-  fight() {
-    clearInterval(this.heroatk);
-    clearInterval(this.monsteratk);
-    setInterval(this.heroatk, this.state.hero.aspd);
-    setInterval(this.monsteratk, this.state.monster.aspd);
+  }, this.state.monster.aspd);
   }
 
   deathTimer() {
