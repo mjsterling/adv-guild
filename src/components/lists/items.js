@@ -188,7 +188,7 @@ const items = [
     atk: 30,
     mhp: 100,
     aspd: 0.7,
-    upcost: ["Titanium", 10000],
+    upcost: ["Titanium", 5000],
   },
   {
     tier: 3,
@@ -198,7 +198,7 @@ const items = [
     atk: 10,
     mhp: 150,
     aspd: 0.85,
-    upcost: ["Titanium", 5000],
+    upcost: ["Titanium", 2000],
   },
   {
     tier: 3,
@@ -208,7 +208,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Titanium", 5000],
+    upcost: ["Titanium", 2000],
   },
   {
     tier: 3,
@@ -218,7 +218,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Titanium", 5000],
+    upcost: ["Titanium", 2000],
   },
   {
     tier: 3,
@@ -228,7 +228,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Titanium", 5000],
+    upcost: ["Titanium", 2000],
   },
   {
     tier: 3,
@@ -238,7 +238,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Titanium", 5000],
+    upcost: ["Titanium", 2000],
   },
   {
     tier: 3,
@@ -248,7 +248,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Titanium", 5000],
+    upcost: ["Titanium", 2000],
   },
   {
     tier: 4,
@@ -258,7 +258,7 @@ const items = [
     atk: 100,
     mhp: 300,
     aspd: 0.6,
-    upcost: ["Tungsten", 50000],
+    upcost: ["Tungsten", 20000],
   },
   {
     tier: 4,
@@ -268,7 +268,7 @@ const items = [
     atk: 50,
     mhp: 450,
     aspd: 0.8,
-    upcost: ["Tungsten", 25000],
+    upcost: ["Tungsten", 10000],
   },
   {
     tier: 4,
@@ -278,7 +278,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Tungsten", 25000],
+    upcost: ["Tungsten", 10000],
   },
   {
     tier: 4,
@@ -288,7 +288,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Tungsten", 25000],
+    upcost: ["Tungsten", 10000],
   },
   {
     tier: 4,
@@ -298,7 +298,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Tungsten", 25000],
+    upcost: ["Tungsten", 10000],
   },
   {
     tier: 4,
@@ -308,7 +308,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Tungsten", 25000],
+    upcost: ["Tungsten", 10000],
   },
 
   //hunter gear
@@ -500,7 +500,7 @@ const items = [
     atk: 30,
     mhp: 100,
     aspd: 0.7,
-    upcost: ["Purpleheart", 10000],
+    upcost: ["Purpleheart", 5000],
   },
   {
     tier: 3,
@@ -510,7 +510,7 @@ const items = [
     atk: 10,
     mhp: 150,
     aspd: 0.85,
-    upcost: ["Drakeskin", 5000],
+    upcost: ["Drakeskin", 2000],
   },
   {
     tier: 3,
@@ -520,7 +520,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Drakeskin", 5000],
+    upcost: ["Drakeskin", 2000],
   },
   {
     tier: 3,
@@ -530,7 +530,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Drakeskin", 5000],
+    upcost: ["Drakeskin", 2000],
   },
   {
     tier: 3,
@@ -540,7 +540,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Drakeskin", 5000],
+    upcost: ["Drakeskin", 2000],
   },
   {
     tier: 3,
@@ -550,7 +550,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Drakeskin", 5000],
+    upcost: ["Drakeskin", 2000],
   },
   {
     tier: 4,
@@ -560,7 +560,7 @@ const items = [
     atk: 100,
     mhp: 300,
     aspd: 0.6,
-    upcost: ["Snakewood", 50000],
+    upcost: ["Snakewood", 20000],
   },
   {
     tier: 4,
@@ -570,7 +570,7 @@ const items = [
     atk: 50,
     mhp: 450,
     aspd: 0.8,
-    upcost: ["Dragonhide", 25000],
+    upcost: ["Dragonhide", 10000],
   },
   {
     tier: 4,
@@ -580,7 +580,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Dragonhide", 25000],
+    upcost: ["Dragonhide", 10000],
   },
   {
     tier: 4,
@@ -590,7 +590,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Dragonhide", 25000],
+    upcost: ["Dragonhide", 10000],
   },
   {
     tier: 4,
@@ -600,7 +600,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Dragonhide", 25000],
+    upcost: ["Dragonhide", 10000],
   },
   {
     tier: 4,
@@ -610,7 +610,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Dragonhide", 25000],
+    upcost: ["Dragonhide", 10000],
   },
   // wizard gear
   {
@@ -801,7 +801,7 @@ const items = [
     atk: 30,
     mhp: 100,
     aspd: 0.7,
-    upcost: ["Purpleheart", 10000],
+    upcost: ["Purpleheart", 5000],
   },
   {
     tier: 3,
@@ -811,7 +811,7 @@ const items = [
     atk: 10,
     mhp: 150,
     aspd: 0.85,
-    upcost: ["Silk", 5000],
+    upcost: ["Silk", 2000],
   },
   {
     tier: 3,
@@ -821,7 +821,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Silk", 5000],
+    upcost: ["Silk", 2000],
   },
   {
     tier: 3,
@@ -831,7 +831,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Silk", 5000],
+    upcost: ["Silk", 2000],
   },
   {
     tier: 3,
@@ -841,7 +841,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Silk", 5000],
+    upcost: ["Silk", 2000],
   },
   {
     tier: 3,
@@ -851,7 +851,7 @@ const items = [
     atk: 5,
     mhp: 300,
     aspd: 0.94,
-    upcost: ["Drakeskin", 5000],
+    upcost: ["Drakeskin", 2000],
   },
   {
     tier: 4,
@@ -861,7 +861,7 @@ const items = [
     atk: 100,
     mhp: 300,
     aspd: 0.6,
-    upcost: ["Snakewood", 50000],
+    upcost: ["Snakewood", 20000],
   },
   {
     tier: 4,
@@ -871,7 +871,7 @@ const items = [
     atk: 50,
     mhp: 450,
     aspd: 0.8,
-    upcost: ["Vicu\xF1a", 25000],
+    upcost: ["Vicu\xF1a", 10000],
   },
   {
     tier: 4,
@@ -881,7 +881,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Vicu\xF1a", 25000],
+    upcost: ["Vicu\xF1a", 10000],
   },
   {
     tier: 4,
@@ -891,7 +891,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Vicu\xF1a", 25000],
+    upcost: ["Vicu\xF1a", 10000],
   },
   {
     tier: 4,
@@ -901,7 +901,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Vicu\xF1a", 25000],
+    upcost: ["Vicu\xF1a", 10000],
   },
   {
     tier: 4,
@@ -911,7 +911,7 @@ const items = [
     atk: 10,
     mhp: 750,
     aspd: 0.92,
-    upcost: ["Dragonhide", 25000],
+    upcost: ["Dragonhide", 10000],
   },
 ];
 
