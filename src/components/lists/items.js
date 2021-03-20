@@ -450,7 +450,7 @@ const items = [
     atk: 4,
     mhp: 50,
     aspd: 0.9,
-    upcost: ["Crocodile Skin", 1000],
+    upcost: ["Croc Skin", 1000],
   },
   {
     tier: 2,
@@ -460,7 +460,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Crocodile Skin", 1000],
+    upcost: ["Croc Skin", 1000],
   },
   {
     tier: 2,
@@ -470,7 +470,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Crocodile Skin", 1000],
+    upcost: ["Croc Skin", 1000],
   },
   {
     tier: 2,
@@ -480,7 +480,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Crocodile Skin", 1000],
+    upcost: ["Croc Skin", 1000],
   },
   {
     tier: 2,
@@ -490,7 +490,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Crocodile Skin", 1000],
+    upcost: ["Croc Skin", 1000],
   },
   {
     tier: 3,
@@ -791,7 +791,7 @@ const items = [
     atk: 2,
     mhp: 75,
     aspd: 0.96,
-    upcost: ["Crocodile Skin", 1000],
+    upcost: ["Croc Skin", 1000],
   },
   {
     tier: 3,
@@ -847,7 +847,7 @@ const items = [
     tier: 3,
     class: "Wizard",
     type: "boots",
-    name: "Crocodile Shoes",
+    name: "Croc Shoes",
     atk: 5,
     mhp: 300,
     aspd: 0.94,

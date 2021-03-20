@@ -30,7 +30,7 @@ class Game extends React.Component {
 
         { name: "Steel", amount: 0 },
         { name: "Maple", amount: 0 },
-        { name: "Crocodile Skin", amount: 0 },
+        { name: "Croc Skin", amount: 0 },
         { name: "Cashmere", amount: 0 },
 
         { name: "Titanium", amount: 0 },
