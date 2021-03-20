@@ -149,7 +149,7 @@ class Game extends React.Component {
           HARD RESET
         </button>
         <p>
-          Warning: This will reset all your progress! Click the below button to
+          Warning: This will reset all your progress! Click the above button to
           confirm:
         </p>
         <button
