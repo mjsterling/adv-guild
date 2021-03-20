@@ -477,9 +477,10 @@ class Fight extends React.Component {
         </ul>
         <ol>
           <li>Current stats:</li>
+          <li>{"DPS: " + Math.round(hero.atk / ( hero.aspd / 1000))}</li>
           <li>{"Attack: " + hero.atk + " dmg"}</li>
-          <li>{"HP Bonus: " + (hero.mhp - 100)}</li>
           <li>{"Att Speed: " + (hero.aspd / 1000).toFixed(2) + "s"}</li>
+          <li>{"HP Bonus: " + (hero.mhp - 100)}</li>
         </ol>
       </div>
     );
