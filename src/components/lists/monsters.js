@@ -6,7 +6,7 @@ const monsters = [
     aspd: 1000,
     chp: 20,
     mhp: 20,
-    xp: 20,
+    xp: 40,
     loot: [
       { name: "Aluminium", max: 10 },
       { name: "Aluminium", max: 10 },
@@ -22,7 +22,7 @@ const monsters = [
     aspd: 1000,
     chp: 20,
     mhp: 20,
-    xp: 20,
+    xp: 40,
 
     loot: [
       { name: "Aluminium", max: 3 },
@@ -39,7 +39,7 @@ const monsters = [
     aspd: 1000,
     chp: 20,
     mhp: 20,
-    xp: 20,
+    xp: 40,
 
     loot: [
       { name: "Aluminium", max: 3 },
@@ -56,7 +56,7 @@ const monsters = [
     aspd: 1000,
     chp: 20,
     mhp: 20,
-    xp: 20,
+    xp: 40,
 
     loot: [
       { name: "Aluminium", max: 3 },
@@ -73,7 +73,7 @@ const monsters = [
     aspd: 750,
     chp: 400,
     mhp: 400,
-    xp: 120,
+    xp: 160,
     loot: [
       { name: "Aluminium", max: 30 },
       { name: "Balsa", max: 30 },
@@ -88,7 +88,7 @@ const monsters = [
     aspd: 1000,
     chp: 200,
     mhp: 200,
-    xp: 60,
+    xp: 80,
     loot: [
       { name: "Bronze", max: 30 },
       { name: "Bronze", max: 30 },
@@ -104,7 +104,7 @@ const monsters = [
     aspd: 1000,
     chp: 200,
     mhp: 200,
-    xp: 60,
+    xp: 80,
     loot: [
       { name: "Bronze", max: 10 },
       { name: "Redwood", max: 30 },
@@ -120,7 +120,7 @@ const monsters = [
     aspd: 1000,
     chp: 200,
     mhp: 200,
-    xp: 60,
+    xp: 80,
     loot: [
       { name: "Bronze", max: 10 },
       { name: "Redwood", max: 10 },
@@ -136,7 +136,7 @@ const monsters = [
     aspd: 1000,
     chp: 200,
     mhp: 200,
-    xp: 60,
+    xp: 80,
     loot: [
       { name: "Bronze", max: 10 },
       { name: "Redwood", max: 10 },
@@ -167,7 +167,7 @@ const monsters = [
     aspd: 1000,
     chp: 600,
     mhp: 600,
-    xp: 120,
+    xp: 160,
     loot: [
       { name: "Steel", max: 100 },
       { name: "Steel", max: 100 },
@@ -183,7 +183,7 @@ const monsters = [
     aspd: 1000,
     chp: 600,
     mhp: 600,
-    xp: 120,
+    xp: 160,
     loot: [
       { name: "Steel", max: 30 },
       { name: "Maple", max: 100 },
@@ -199,7 +199,7 @@ const monsters = [
     aspd: 1000,
     chp: 600,
     mhp: 600,
-    xp: 120,
+    xp: 160,
     loot: [
       { name: "Steel", max: 30 },
       { name: "Maple", max: 30 },
@@ -215,7 +215,7 @@ const monsters = [
     aspd: 1000,
     chp: 600,
     mhp: 600,
-    xp: 120,
+    xp: 160,
     loot: [
       { name: "Steel", max: 30 },
       { name: "Maple", max: 30 },
