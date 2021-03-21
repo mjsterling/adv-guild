@@ -292,11 +292,11 @@ class Game extends React.Component {
   }
 
   shortScale(n) {
-    if (n >= 10 ** 13) {
+    if (n >= 10 ** 10) {
       return Math.round(n / 10 ** 9) + "B";
-    } else if (n >= 10 ** 10) {
+    } else if (n >= 10 ** 9) {
       return (n / 10 ** 9).toFixed(1) + "B";
-    } else if (n >= 10 ** 8) {
+    } else if (n >= 10 ** 7) {
       return Math.round(n / 10 ** 6) + "M";
     } else if (n >= 10 ** 6) {
       return (n / 10 ** 6).toFixed(1) + "M";
