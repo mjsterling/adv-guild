@@ -361,7 +361,7 @@ class Fight extends React.Component {
       while (heroc.cxp >= heroc.mxp) {
       heroc.level++;
       heroc.cxp -= heroc.mxp;
-      heroc.mxp = Math.floor(heroc.mxp + 20 * 1.2 ** (heroc.level - 1));
+      heroc.mxp = Math.floor(heroc.mxp + 40 * 1.2 ** (heroc.level - 1));
       }
       setTimeout(() => {
         this.setState(
