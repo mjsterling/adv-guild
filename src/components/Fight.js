@@ -270,6 +270,7 @@ class Fight extends React.Component {
             })
           }
           name={this.state.hero.name}
+          shortScale={this.props.shortScale}
         />
       </div>
     );
@@ -477,10 +478,10 @@ class Fight extends React.Component {
         </ul>
         <ol>
           <li>Current stats:</li>
-          <li>{"DPS: " + Math.round(hero.atk / ( hero.aspd / 1000))}</li>
-          <li>{"Attack: " + hero.atk + " dmg"}</li>
+          <li>{"DPS: " + this.props.shortScale(Math.round(hero.atk / ( hero.aspd / 1000)))}</li>
+          <li>{"Attack: " + this.props.shortScale(hero.atk) + " dmg"}</li>
           <li>{"Att Speed: " + (hero.aspd / 1000).toFixed(2) + "s"}</li>
-          <li>{"HP Bonus: " + (hero.mhp - 100)}</li>
+          <li>{"HP Bonus: " + this.props.shortScale(hero.mhp - 100)}</li>
         </ol>
       </div>
     );
@@ -550,7 +551,7 @@ function EquipTT(props) {
       <button key="10" onClick={props.upgrade}>
         {"Upgrade"}
         <br />
-        {"Cost: " + this.props.shortScale(item.upcost[1]) + " " + item.upcost[0]}
+        {"Cost: " + props.shortScale(item.upcost[1]) + " " + item.upcost[0]}
       </button>
       <button key="11" onClick={props.close}>
         Close menu

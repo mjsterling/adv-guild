@@ -28,7 +28,7 @@ button {
 }
 
 .inventorymenu  {
-  width: 100%;
+  width: 90%;
   height: 12%;
   display: flex;
   padding: 1%;
@@ -40,6 +40,10 @@ button {
   overflow: hidden;
   text-align: center;
   font-size: 13px;
+}
+.inventorymenu > * {
+  width: 33.33%;
+  text-align: right;
 }
 
 .resetWindow {
@@ -89,10 +93,6 @@ button {
 .instructions button {
   height: 50px;
   width: 100px;
-}
-
-.inventorymenu > * {
-  padding: 0 5% 0 0;
 }
 
 ol {
@@ -155,7 +155,7 @@ ol {
   height: 14%;
   border: 1px solid black;
   border-radius: 4px;
-  background: darkgray;
+  background: rgba(169, 169, 169, 0.7);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -261,11 +261,11 @@ ol {
 }
 
 .monstermenu {
-  height: 300%;
-  width: 90%;
+  height: 400%;
+  width: 104%;
   position: absolute;
-  left: 5%;
-  top: 0%;
+  left: -2%;
+  top: -10%;
   background: rgb(70, 70, 70);
   border: 1px solid white;
   border-radius: 10px;
@@ -287,22 +287,21 @@ ol {
   justify-content: space-evenly;
   align-items: space-evenly;
   align-content: space-evenly;
-  padding-top: 5%;
 }
 
 .monsterbtns button {
   height: 50px;
-  width: 60px;
+  width: 70px;
   font-size: 11px;
-  padding: 0;
+  padding: 2px;
 }
 
 .equipmentmenu {
-  height: 500%;
-  width: 90%;
+  height: 400%;
+  width: 70%;
   position: absolute;
-  left: 5%;
-  top: 0%;
+  left: 15%;
+  top: -10%;
   border: 1px solid white;
   border-radius: 10px;
   background-color: rgba(70, 70, 70, 1);
@@ -311,6 +310,7 @@ ol {
   justify-content: flex-start;
   align-items: center;
   flex-flow: column nowrap;
+  text-shadow: none;
 }
 
 .equipbtns {
@@ -322,7 +322,7 @@ ol {
 }
 
 .equipbtns button {
-  height: 8vh;
+  height: 50px;
   width: 100px;
   margin: 3% 3%;
 }
@@ -342,16 +342,17 @@ ol {
 }
 
 .equipTT {
-  height: 500%;
-  width: 90%;
+  height: 400%;
+  width: 70%;
   position: absolute;
-  left: 5%;
-  top: 0%;
+  left: 15%;
+  top: -10%;
   background-color: rgba(70, 70, 70, 1);
   border: 1px solid white;
   border-radius: 10px;
     z-index: 3;
   padding-top: 5%;
+  text-shadow: none;
 }
 
 .herodead {

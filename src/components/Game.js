@@ -56,7 +56,6 @@ class Game extends React.Component {
         ? parseInt(localStorage.getItem(inventory[i].name), 10)
         : 0;
     }
-    console.log(localStorage.getItem("instructions"));
     let instructions =
       localStorage.getItem("instructions") == "false" ? false : true;
     tier = localStorage.getItem("tier")
@@ -227,7 +226,6 @@ class Game extends React.Component {
   inventoryMenu() {
     let inventoryList = Array(this.state.inventory.length);
     for (let i = 0; i < inventoryList.length; i++) {
-      console.log(this.state.inventory[i]);
       inventoryList[i] = this.state.inventory[i].amount
         ? this.renderInventory(i)
         : null;
@@ -236,22 +234,27 @@ class Game extends React.Component {
   }
 
   shortScale(n) {
-    let number = n.toString(10);
-      if (number.length > 7) {
-      return (Math.round(n/1000000) + "M")
-      } else if (number.length === 7) {
-        return ((n/1000000).toFixed(1) + "M")
-      } else if (number.length > 4) {
-        return (Math.round(n/1000) + "K")
-      } else if (number.length === 4) {
-        return (n / 1000).toFixed(1)
-      } else {
-        return number;
+    if (n >= 10 ** 8) {
+      return Math.round(n / 10 ** 6) + "M";
+    } else if (n >= 10 ** 6) {
+      return (n / 10 ** 6).toFixed(1) + "M";
+    } else if (n >= 10 ** 4) {
+      return Math.round(n / 1000) + "K";
+    } else if (n >= 1000) {
+      return (n / 1000).toFixed(1) + "K";
+    } else {
+      return n;
+    }
   }
-}
   //dynamic class iteratively called inside inventoryMenu() for loop
   renderInventory(i) {
-    return <Inventory key={i} contents={this.state.inventory[i]} shortScale={this.shortScale()} />;
+    return (
+      <Inventory
+        key={i}
+        contents={this.state.inventory[i]}
+        shortScale={this.shortScale}
+      />
+    );
   }
   //calculate monster drop tables and update inventory totals. receives arg as array from Fight.fight()
   monsterDrop(monster) {
@@ -308,7 +311,6 @@ class Game extends React.Component {
     let resource = inventory.findIndex((x) => x.name === name);
     inventory[resource].amount -= cost;
     let tier = this.state.tier;
-    console.log("equipment:", equipment);
     //tier unlocked becomes equal to the lowest tier item in equipment array if higher than current
     let equipment1 = equipment.sort();
     let log = this.state.log;
@@ -325,7 +327,11 @@ class Game extends React.Component {
 }
 //function class returns line items of Game.state.inventory pairs based on Game.inventoryMenu() for loop
 function Inventory(props) {
-  return <li>{props.contents.name + ": " + props.shortScale(props.contents.amount)}</li>;
+  return (
+    <li>
+      {props.contents.name + ": " + props.shortScale(props.contents.amount)}
+    </li>
+  );
 }
 
 function LogItem(props) {
