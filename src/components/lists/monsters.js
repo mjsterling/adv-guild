@@ -344,8 +344,8 @@ const monsters = [
     xp: 3000,
     loot: [
       { name: "Tungsten", max: 500 },
-      { name: "Purpleheart", max: 1500 },
-      { name: "Purpleheart", max: 1500 },
+      { name: "Snakewood", max: 1500 },
+      { name: "Snakewood", max: 1500 },
       { name: "Dragonhide", max: 500},
       { name: "Vicu\xF1a", max: 500 },
     ],
@@ -360,7 +360,7 @@ const monsters = [
     xp: 3000,
     loot: [
       { name: "Tungsten", max: 500 },
-      { name: "Purpleheart", max: 500 },
+      { name: "Snakewood", max: 500 },
       { name: "Dragonhide", max: 1500},
       { name: "Dragonhide", max: 1500},
       { name: "Vicu\xF1a", max: 500 },
@@ -376,7 +376,7 @@ const monsters = [
     xp: 3000,
     loot: [
       { name: "Tungsten", max: 500 },
-      { name: "Purpleheart", max: 500 },
+      { name: "Snakewood", max: 500 },
       { name: "Dragonhide", max: 500},
       { name: "Vicu\xF1a", max: 1500 },
       { name: "Vicu\xF1a", max: 1500 },
@@ -392,7 +392,7 @@ const monsters = [
     xp: 30000,
     loot: [
       { name: "Tungsten", max: 5000 },
-      { name: "Purpleheart", max: 5000 },
+      { name: "Snakewood", max: 5000 },
       { name: "Dragonhide", max: 5000},
       { name: "Vicu\xF1a", max: 5000 },
     ],
