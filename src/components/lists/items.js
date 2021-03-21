@@ -324,6 +324,7 @@ const items = [
     tier: 5,
     class: "Warrior",
     type: "gloves",
+    name: "Tungsten Vambraces",
     atk: 500,
     mhp: 6500,
     aspd: 0.75,
