@@ -178,7 +178,7 @@ class Game extends React.Component {
 
   youWin() {
     return (
-      <div className="resetWindow">
+      <div className="youWin">
         <p>
           Congratulations! You have stolen the Mantle of the Universe from Time
           Himself and become the most powerful being in all creation.
