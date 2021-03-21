@@ -238,7 +238,7 @@ class Game extends React.Component {
             })
           }
         >
-          Close
+          OK
         </button>
       </div>
     );
