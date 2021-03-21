@@ -113,9 +113,10 @@ class Game extends React.Component {
     let instructions = this.state.instructions ? this.instructions() : null;
     let inventoryBtnText = this.state.inventoryMenu ? "Log" : "Inventory";
     let youWin = this.state.youWin ? this.youWin() : null;
+    let containerclass = this.state.tier >= 5 ? "containerspace" : "containerearth"
     return (
       <div>
-        <div className="container">
+        <div className={containerclass}>
           <div className="fightcontainer">{fightboxes}</div>
           {log}
           {inventoryMenu}
@@ -246,10 +247,11 @@ class Game extends React.Component {
   }
 
   renderFight(i) {
+    let fightclass = this.state.tier >=5 ? "fightspace" : "fightearth";
     return (
       <Fight
         key={i}
-        className="fight"
+        className={fightspace}
         heroId={i}
         monsterDrop={this.monsterDrop}
         inventory={this.state.inventory}
