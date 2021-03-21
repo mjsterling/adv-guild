@@ -321,6 +321,9 @@ class Game extends React.Component {
           ] +
           "Loot: Nothing!"
       );
+      this.setState({
+        log: log,
+      });
     } else {
     let dropid = Math.floor(Math.random() * monster.loot.length);
     let drop = monster.loot[dropid].name;
