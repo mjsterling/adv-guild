@@ -314,7 +314,7 @@ class Game extends React.Component {
     let log = this.state.log;
     let roll = monster.tier >= 5 && monster.tier < 9 ? Math.floor(Math.random() * 100) : "";
     let rollMsg = roll >= 0 ? " Roll: " + roll + ". " : null;
-    if (roll >= 0 && roll <= 90) {
+    if (monster.tier >= 5 && roll <= 90) {
       log.push(
         monster.name +
           monsterDeathMsgs[
