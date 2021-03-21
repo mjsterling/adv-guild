@@ -522,18 +522,18 @@ function EquipTT(props) {
       x.tier === props.itemtier &&
       x.class === props.name
   );
-  let newitem = items.find(
+  let newitem = props.itemtier < 9 ? items.find(
     (x) =>
       x.tier === props.itemtier + 1 &&
       x.type === props.itemtype &&
       x.class === props.name
-  );
+  ) : {name: "Max Tier!", tier: "N/A", atk: 1, mhp: 1, aspd: 1};
   return (
     <ul className="equipttbtns">
       <div key="0">Current Item:</div>
       <li key="1">{item.name}</li>
-      <li key="2">{"Attack bonus: " + item.atk}</li>
-      <li key="3">{"HP bonus: " + item.mhp}</li>
+      <li key="2">{"Attack bonus: " + props.shortscale(item.atk)}</li>
+      <li key="3">{"HP bonus: " + props.shortscale(item.mhp)}</li>
       <li key="4">
         {"Attack speed boost: " +
           ((1 / item.aspd) * 100 - 100).toFixed(0) +
@@ -542,8 +542,8 @@ function EquipTT(props) {
       <br />
       <div key="5">Next Item:</div>
       <li key="6">{newitem.name}</li>
-      <li key="7">{"Attack bonus: " + newitem.atk}</li>
-      <li key="8">{"HP bonus: " + newitem.mhp}</li>
+      <li key="7">{"Attack bonus: " + props.shortScale(newitem.atk)}</li>
+      <li key="8">{"HP bonus: " + props.shortScale(newitem.mhp)}</li>
       <li key="9">
         {"Attack speed boost: " +
           ((1 / newitem.aspd) * 100 - 100).toFixed(0) +
