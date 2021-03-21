@@ -319,7 +319,7 @@ class Game extends React.Component {
           monsterDeathMsgs[
             Math.floor(Math.random() * monsterDeathMsgs.length)
           ] +
-          "Loot: Nothing!"
+          " Loot: Nothing!"
       );
       this.setState({
         log: log,
