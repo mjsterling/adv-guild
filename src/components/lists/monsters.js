@@ -314,7 +314,7 @@ const monsters = [
     loot: [
       { name: "Titanium", max: 1000 },
       { name: "Purpleheart", max: 1000 },
-      { name: "Dragonhide", max: 1000 },
+      { name: "Drakeskin", max: 1000 },
       { name: "Silk", max: 1000 },
     ],
   },
