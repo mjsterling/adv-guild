@@ -532,8 +532,8 @@ function EquipTT(props) {
     <ul className="equipttbtns">
       <div key="0">Current Item:</div>
       <li key="1">{item.name}</li>
-      <li key="2">{"Attack bonus: " + props.shortscale(item.atk)}</li>
-      <li key="3">{"HP bonus: " + props.shortscale(item.mhp)}</li>
+      <li key="2">{"Attack bonus: " + props.shortScale(item.atk)}</li>
+      <li key="3">{"HP bonus: " + props.shortScale(item.mhp)}</li>
       <li key="4">
         {"Attack speed boost: " +
           ((1 / item.aspd) * 100 - 100).toFixed(0) +
