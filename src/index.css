@@ -49,13 +49,23 @@ ul {
   align-content: flex-end;
   margin: auto 0 0 0;
   overflow-y: hidden;
-  overflow-x: scroll;
+  overflow-x: auto;
   text-align: center;
   font-size: 13px;
 }
 .inventorymenu > * {
   text-align: right;
   padding: 0 5%;
+}
+
+.inventorymenu::-webkit-scrollbar {
+  height: 1vw;
+  background: transparent;
+  z-index: 1;
+}
+.inventorymenu::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 0.5vw;
 }
 
 .resetWindow {
