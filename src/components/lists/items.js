@@ -67,7 +67,7 @@ const items = [
     name: "Aluminium Foil",
     atk: 3,
     mhp: 0,
-    aspd: 0.9,
+    aspd: 0.95,
     upcost: ["Bronze", 200],
   },
   {
@@ -127,7 +127,7 @@ const items = [
     name: "Bronze Broadsword",
     atk: 10,
     mhp: 25,
-    aspd: 0.8,
+    aspd: 0.9,
     upcost: ["Steel", 1000],
   },
   {
@@ -187,7 +187,7 @@ const items = [
     name: "Steel Broadsword",
     atk: 30,
     mhp: 100,
-    aspd: 0.7,
+    aspd: 0.85,
     upcost: ["Titanium", 5000],
   },
   {
@@ -257,7 +257,7 @@ const items = [
     name: "Titanium Broadsword",
     atk: 100,
     mhp: 300,
-    aspd: 0.6,
+    aspd: 0.8,
     upcost: ["Tungsten", 20000],
   },
   {
@@ -317,7 +317,7 @@ const items = [
     name: "Tungsten Broadsword",
     atk: 1000,
     mhp: 3500,
-    aspd: 0.5,
+    aspd: 0.75,
     upcost: ["Diamond Weapon", 1],
   },
   {
@@ -377,7 +377,7 @@ const items = [
     name: "Diamond Sword",
     atk: 10000,
     mhp: 35000,
-    aspd: 0.4,
+    aspd: 0.7,
     upcost: ["Prismatic Weapon", 1],
   },
   {
@@ -437,7 +437,7 @@ const items = [
     name: "Prismatic Sword",
     atk: 100000,
     mhp: 350000,
-    aspd: 0.3,
+    aspd: 0.65,
     upcost: ["Olympian Weapon", 1],
   },
   {
@@ -497,7 +497,7 @@ const items = [
     name: "Olympian Sword",
     atk: 1000000,
     mhp: 3500000,
-    aspd: 0.2,
+    aspd: 0.6,
     upcost: ["Starforged Weapon", 1],
   },
   {
@@ -557,7 +557,7 @@ const items = [
     name: "Starforged Sword",
     atk: 10000000,
     mhp: 35000000,
-    aspd: 0.1,
+    aspd: 0.5,
     upcost: ["Max Tier!", 1],
   },
   {
@@ -679,7 +679,7 @@ const items = [
     name: "Balsa Longbow",
     atk: 3,
     mhp: 0,
-    aspd: 0.9,
+    aspd: 0.95,
     upcost: ["Redwood", 200],
   },
   {
@@ -739,7 +739,7 @@ const items = [
     name: "Redwood Longbow",
     atk: 10,
     mhp: 25,
-    aspd: 0.8,
+    aspd: 0.9,
     upcost: ["Maple", 1000],
   },
   {
@@ -799,7 +799,7 @@ const items = [
     name: "Maple Longbow",
     atk: 30,
     mhp: 100,
-    aspd: 0.7,
+    aspd: 0.85,
     upcost: ["Purpleheart", 5000],
   },
   {
@@ -859,7 +859,7 @@ const items = [
     name: "Purpleheart Longbow",
     atk: 100,
     mhp: 300,
-    aspd: 0.6,
+    aspd: 0.8,
     upcost: ["Snakewood", 20000],
   },
   {
@@ -920,7 +920,7 @@ const items = [
     name: "Snakewood Longbow",
     atk: 1000,
     mhp: 3500,
-    aspd: 0.5,
+    aspd: 0.75,
     upcost: ["Diamond Weapon", 1],
   },
   {
@@ -980,7 +980,7 @@ const items = [
   name: "Diamond Longbow",
   atk: 10000,
   mhp: 35000,
-  aspd: 0.4,
+  aspd: 0.7,
   upcost: ["Prismatic Weapon", 1],
 },
 {
@@ -1040,7 +1040,7 @@ const items = [
   name: "Prismatic Longbow",
   atk: 100000,
   mhp: 350000,
-  aspd: 0.3,
+  aspd: 0.65,
   upcost: ["Olympian Weapon", 1],
 },
 {
@@ -1100,7 +1100,7 @@ const items = [
   name: "Olympian Longbow",
   atk: 1000000,
   mhp: 3500000,
-  aspd: 0.2,
+  aspd: 0.6,
   upcost: ["Starforged Weapon", 1],
 },
 {
@@ -1160,7 +1160,7 @@ const items = [
   name: "Starforged Longbow",
   atk: 10000000,
   mhp: 35000000,
-  aspd: 0.1,
+  aspd: 0.5,
   upcost: ["Max Tier!", 1],
 },
 {
@@ -1282,7 +1282,7 @@ const items = [
     name: "Balsa Staff",
     atk: 3,
     mhp: 0,
-    aspd: 0.9,
+    aspd: 0.95,
     upcost: ["Redwood", 200],
   },
   {
@@ -1342,7 +1342,7 @@ const items = [
     name: "Redwood Staff",
     atk: 10,
     mhp: 25,
-    aspd: 0.8,
+    aspd: 0.9,
     upcost: ["Maple", 1000],
   },
   {
@@ -1402,7 +1402,7 @@ const items = [
     name: "Maple Staff",
     atk: 30,
     mhp: 100,
-    aspd: 0.7,
+    aspd: 0.85,
     upcost: ["Purpleheart", 5000],
   },
   {
@@ -1462,7 +1462,7 @@ const items = [
     name: "Purpleheart Staff",
     atk: 200,
     mhp: 350,
-    aspd: 0.6,
+    aspd: 0.8,
     upcost: ["Snakewood", 20000],
   },
   {
@@ -1522,7 +1522,7 @@ const items = [
     name: "Snakewood Staff",
     atk: 1000,
     mhp: 3500,
-    aspd: 0.5,
+    aspd: 0.75,
     upcost: ["Diamond Weapon", 1],
   },
   {
@@ -1582,7 +1582,7 @@ const items = [
     name: "Diamond Staff",
     atk: 10000,
     mhp: 35000,
-    aspd: 0.4,
+    aspd: 0.7,
     upcost: ["Prismatic Weapon", 1],
   },
   {
@@ -1642,7 +1642,7 @@ const items = [
     name: "Prismatic Staff",
     atk: 100000,
     mhp: 350000,
-    aspd: 0.3,
+    aspd: 0.65,
     upcost: ["Olympian Weapon", 1],
   },
   {
@@ -1702,7 +1702,7 @@ const items = [
     name: "Olympian Staff",
     atk: 1000000,
     mhp: 3500000,
-    aspd: 0.2,
+    aspd: 0.6,
     upcost: ["Starforged Weapon", 1],
   },
   {
@@ -1762,7 +1762,7 @@ const items = [
     name: "Starforged Staff",
     atk: 10000000,
     mhp: 35000000,
-    aspd: 0.1,
+    aspd: 0.5,
     upcost: ["Max Tier!", 1],
   },
   {
