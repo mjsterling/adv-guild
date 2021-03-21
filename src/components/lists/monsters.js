@@ -415,7 +415,7 @@ const monsters = [
     ],
   },
   {
-    tier: 5,
+    tier: 6,
     name: "Prismatic Titan",
     atk: 10000,
     aspd: 1000,
@@ -432,7 +432,7 @@ const monsters = [
     ],
   },
   {
-    tier: 5,
+    tier: 7,
     name: "Olympian Titan",
     atk: 100000,
     aspd: 1000,
@@ -450,7 +450,7 @@ const monsters = [
 
   },
   {
-    tier: 5,
+    tier: 8,
     name: "Starforged Titan",
     atk: 1000000,
     aspd: 1000,
