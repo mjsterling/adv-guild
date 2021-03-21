@@ -396,7 +396,8 @@ class Fight extends React.Component {
     const heroatk = setInterval(() => {
       let monsterc = this.state.monster;
       monsterc.chp = monsterc.chp - this.state.hero.atk;
-      if (this.state.monster.chp < 1) {
+      if (monsterc.chp < 1) {
+        monsterc.chp = 0;
         clearInterval(heroatk);
         clearInterval(monsteratk);
         this.props.monsterDrop(
@@ -414,6 +415,7 @@ class Fight extends React.Component {
       let hero = this.state.hero;
       hero.chp = hero.chp - this.state.monster.atk;
       if (hero.chp < 1) {
+        hero.chp = 0;
         clearInterval(this.state.heroatk);
         clearInterval(this.state.monsteratk);
         let deathMsg =
