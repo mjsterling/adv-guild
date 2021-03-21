@@ -67,7 +67,7 @@ const monsters = [
     ],
   },
   {
-    tier: 0,
+    tier: 1,
     name: "The Inamicable",
     atk: 5,
     aspd: 750,
@@ -146,7 +146,7 @@ const monsters = [
     ],
   },
   {
-    tier: 1,
+    tier: 2,
     name: "The Indomitable",
     atk: 10,
     aspd: 500,
@@ -225,7 +225,7 @@ const monsters = [
     ],
   },
   {
-    tier: 2,
+    tier: 3,
     name: "The Insurmountable",
     atk: 50,
     aspd: 500,
@@ -304,7 +304,7 @@ const monsters = [
     ],
   },
   {
-    tier: 3,
+    tier: 4,
     name: "The Inconceivable",
     atk: 200,
     aspd: 500,
