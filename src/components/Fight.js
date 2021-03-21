@@ -176,7 +176,7 @@ class Fight extends React.Component {
     const herodead = this.state.heroDead ? this.heroDead() : null;
     const chooseClass = hero.name === "\xa0" ? this.chooseClass() : null;
     return (
-      <div className="fight">
+      <div className={this.props.fightclass}>
         <div className="heroname">{hero.name}</div>
         <div className="hpcontainer">
           <div className="herohpbar" style={{ width: herohppc + "%" }}></div>
