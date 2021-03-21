@@ -113,7 +113,8 @@ class Game extends React.Component {
     let instructions = this.state.instructions ? this.instructions() : null;
     let inventoryBtnText = this.state.inventoryMenu ? "Log" : "Inventory";
     let youWin = this.state.youWin ? this.youWin() : null;
-    let containerclass = this.state.tier >= 5 ? "containerspace" : "containerearth";
+    let containerclass =
+      this.state.tier >= 5 ? "containerspace" : "containerearth";
     return (
       <div>
         <div className={containerclass}>
@@ -178,13 +179,18 @@ class Game extends React.Component {
   youWin() {
     return (
       <div className="resetWindow">
-      <p>
-        Congratulations! You have stolen the Mantle of the Universe from Time Himself and become the most powerful being in all creation.</p>
-        <p>I really didn't expect anyone to get this far. 
-          Thanks for playing! I admire your dedication. 
-          Please email me at <a href="mailto:mjsterling93@gmail.com">mjsterling93@gmail.com</a> and let me know your thoughts!</p>
-    </div>
-    )
+        <p>
+          Congratulations! You have stolen the Mantle of the Universe from Time
+          Himself and become the most powerful being in all creation.
+        </p>
+        <p>
+          I really didn't expect anyone to get this far. Thanks for playing! I
+          admire your dedication. Please email me at{" "}
+          <a href="mailto:mjsterling93@gmail.com">mjsterling93@gmail.com</a> and
+          let me know your thoughts!
+        </p>
+      </div>
+    );
   }
 
   resetWindow() {
@@ -247,7 +253,7 @@ class Game extends React.Component {
   }
 
   renderFight(i) {
-    let fightclass = this.state.tier >=5 ? "fightspace" : "fightearth";
+    let fightclass = this.state.tier >= 5 ? "fightspace" : "fightearth";
     return (
       <Fight
         key={i}
@@ -286,7 +292,11 @@ class Game extends React.Component {
   }
 
   shortScale(n) {
-    if (n >= 10 ** 8) {
+    if (n >= 10 ** 13) {
+      return Math.round(n / 10 ** 9) + "B";
+    } else if (n >= 10 ** 10) {
+      return (n / 10 ** 9).toFixed(1) + "B";
+    } else if (n >= 10 ** 8) {
       return Math.round(n / 10 ** 6) + "M";
     } else if (n >= 10 ** 6) {
       return (n / 10 ** 6).toFixed(1) + "M";
@@ -325,32 +335,34 @@ class Game extends React.Component {
         log: log,
       });
     } else {
-    let dropid = Math.floor(Math.random() * monster.loot.length);
-    let drop = monster.loot[dropid].name;
-    let youWin = drop === "Mantle of the Universe" ? true: false;
-    let dropamount = Math.floor(Math.random() * monster.loot[dropid].max) + 1;
-    let stockpile = inventory.find((x) => x.name === drop).amount;
-    stockpile += dropamount;
-    log.push(
-      monster.name +
-        monsterDeathMsgs[Math.floor(Math.random() * monsterDeathMsgs.length)] +
-        " Loot: " +
-        dropamount +
-        " " +
-        drop
-    );
-    inventory.splice(
-      inventory.findIndex((x) => x.name === drop),
-      1,
-      { name: drop, amount: stockpile }
-    );
-    this.setState({
-      inventory: inventory,
-      log: log,
-      youWin: youWin,
-    });
+      let dropid = Math.floor(Math.random() * monster.loot.length);
+      let drop = monster.loot[dropid].name;
+      let youWin = drop === "Mantle of the Universe" ? true : false;
+      let dropamount = Math.floor(Math.random() * monster.loot[dropid].max) + 1;
+      let stockpile = inventory.find((x) => x.name === drop).amount;
+      stockpile += dropamount;
+      log.push(
+        monster.name +
+          monsterDeathMsgs[
+            Math.floor(Math.random() * monsterDeathMsgs.length)
+          ] +
+          " Loot: " +
+          dropamount +
+          " " +
+          drop
+      );
+      inventory.splice(
+        inventory.findIndex((x) => x.name === drop),
+        1,
+        { name: drop, amount: stockpile }
+      );
+      this.setState({
+        inventory: inventory,
+        log: log,
+        youWin: youWin,
+      });
+    }
   }
-}
 
   logLevel(hero) {
     let log = this.state.log;
