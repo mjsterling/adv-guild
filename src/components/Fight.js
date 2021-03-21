@@ -398,8 +398,8 @@ class Fight extends React.Component {
       monsterc.chp = monsterc.chp - this.state.hero.atk;
       if (monsterc.chp < 1) {
         monsterc.chp = 0;
-        clearInterval(heroatk);
-        clearInterval(monsteratk);
+        clearInterval(this.state.heroatk);
+        clearInterval(this.state.monsteratk);
         this.props.monsterDrop(
           this.state.monster
         );
