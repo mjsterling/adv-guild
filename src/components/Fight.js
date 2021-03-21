@@ -11,7 +11,8 @@ const recoveringMsgs = [
   "Composing a ballad... ",
   "Reattaching limbs... ",
   "Twiddling thumbs... ",
-  "Performing open heart surgery...",
+  "Performing open heart surgery... ",
+  "Doing a step class... "
 ];
 
 class Fight extends React.Component {
@@ -125,7 +126,7 @@ class Fight extends React.Component {
     localStorage.setItem(hero.id + "boots", hero.equipment.boots);
   }
 
-  calculateStats(f) {
+  calculateStats() {
     let hero = this.state.hero;
     if (hero.name !== "\xa0") {
       let equipment = hero.equipment;
@@ -152,9 +153,8 @@ class Fight extends React.Component {
             x.tier === equipentries[i][1] &&
             x.class === hero.name
         ).aspd;
-        console.log(hero);
       }
-      this.setState({ hero: hero }, () => (f ? this.fight() : null));
+      this.setState({ hero: hero });
     }
   }
 
@@ -257,7 +257,6 @@ class Fight extends React.Component {
   openequipTT() {
     let itemtier = this.state.equipTTTier;
     let itemtype = this.state.equipTTType;
-    console.log(itemtype, itemtier);
     return (
       <div className="equipTT">
         <EquipTT
@@ -283,7 +282,6 @@ class Fight extends React.Component {
         x.type === itemtype &&
         x.class === this.state.hero.name
     );
-    console.log(item);
     let stockpile = this.props.inventory.find((x) => x.name === item.upcost[0])
       .amount;
     if (stockpile >= item.upcost[1]) {

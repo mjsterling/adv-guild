@@ -37,6 +37,41 @@ class Game extends React.Component {
         { name: "Purpleheart", amount: 0 },
         { name: "Drakeskin", amount: 0 },
         { name: "Silk", amount: 0 },
+
+        { name: "Tungsten", amount: 0 },
+        { name: "Snakewood", amount: 0 },
+        { name: "Dragonhide", amount: 0 },
+        { name: "Vicu\xF1a", amount: 0 },
+
+        { name: "Diamond Weapon", amount: 0 },
+        { name: "Diamond Gloves", amount: 0 },
+        { name: "Diamond Helmet", amount: 0 },
+        { name: "Diamond Chestpiece", amount: 0 },
+        { name: "Diamond Legpiece", amount: 0 },
+        { name: "Diamond Boots", amount: 0 },
+
+        { name: "Prismatic Weapon", amount: 0 },
+        { name: "Prismatic Gloves", amount: 0 },
+        { name: "Prismatic Helmet", amount: 0 },
+        { name: "Prismatic Chestpiece", amount: 0 },
+        { name: "Prismatic Legpiece", amount: 0 },
+        { name: "Prismatic Boots", amount: 0 },
+
+        { name: "Olympian Weapon", amount: 0 },
+        { name: "Olympian Gloves", amount: 0 },
+        { name: "Olympian Helmet", amount: 0 },
+        { name: "Olympian Chestpiece", amount: 0 },
+        { name: "Olympian Legpiece", amount: 0 },
+        { name: "Olympian Boots", amount: 0 },
+
+        { name: "Starforged Weapon", amount: 0 },
+        { name: "Starforged Gloves", amount: 0 },
+        { name: "Starforged Helmet", amount: 0 },
+        { name: "Starforged Chestpiece", amount: 0 },
+        { name: "Starforged Legpiece", amount: 0 },
+        { name: "Starforged Boots", amount: 0 },
+        { name: "Max Tier!", amount: 0 },
+        { name: "Mantle of the Universe", amount: 0 },
       ],
       tier: 0, //highest unlocked tier
       settingsMenu: { open: false, sound: true, music: true },
@@ -44,6 +79,7 @@ class Game extends React.Component {
       log: [],
       instructions: true,
       resetWindow: false,
+      youWin: false,
     };
   }
 
@@ -76,6 +112,7 @@ class Game extends React.Component {
     let resetWindow = this.state.resetWindow ? this.resetWindow() : null;
     let instructions = this.state.instructions ? this.instructions() : null;
     let inventoryBtnText = this.state.inventoryMenu ? "Log" : "Inventory";
+    let youWin = this.state.youWin ? this.youWin() : null;
     return (
       <div>
         <div className="container">
@@ -84,6 +121,7 @@ class Game extends React.Component {
           {inventoryMenu}
           {resetWindow}
           {instructions}
+          {youWin}
           <div className="menubar">
             <div className="menubtns">
               {/* toggle settings - TODO */}
@@ -134,6 +172,18 @@ class Game extends React.Component {
       localStorage.setItem(inventory[i].name, inventory[i].amount.toString(10));
     }
     localStorage.setItem("instructions", this.state.instructions);
+  }
+
+  youWin() {
+    return (
+      <div className="resetWindow">
+      <p>
+        Congratulations! You have stolen the Mantle of the Universe from Time Himself and become the most powerful being in all creation.</p>
+        <p>I really didn't expect anyone to get this far. 
+          Thanks for playing! I admire your dedication. 
+          Please email me at <a href="mailto:mjsterling93@gmail.com">mjsterling93@gmail.com</a> and let me know your thoughts!</p>
+    </div>
+    )
   }
 
   resetWindow() {
