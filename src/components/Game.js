@@ -310,7 +310,7 @@ class Game extends React.Component {
   monsterDrop(monster) {
     let inventory = this.state.inventory;
     let log = this.state.log;
-    let roll = monster.tier === 5 ? Math.floor(Math.random() * 100) : "";
+    let roll = monster.tier === 5 ? "Roll: " + Math.floor(Math.random() * 100) : "";
     if (monster.tier === 5 && roll < 90) {
       log.push(
         monster.name +
@@ -322,7 +322,7 @@ class Game extends React.Component {
           ". " +
           "Loot: Nothing!"
       );
-    }
+    } else {
     let dropid = Math.floor(Math.random() * monster.loot.length);
     let drop = monster.loot[dropid].name;
     let dropamount = Math.floor(Math.random() * monster.loot[dropid].max) + 1;
@@ -347,6 +347,7 @@ class Game extends React.Component {
       log: log,
     });
   }
+}
 
   logLevel(hero) {
     let log = this.state.log;
