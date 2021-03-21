@@ -39,7 +39,7 @@ class Fight extends React.Component {
         },
       },
       monster: {
-        id: null,
+        tier: null,
         name: "Select Enemy",
         atk: null,
         aspd: null,
@@ -180,12 +180,12 @@ class Fight extends React.Component {
         <div className="heroname">{hero.name}</div>
         <div className="hpcontainer">
           <div className="herohpbar" style={{ width: herohppc + "%" }}></div>
-          <div className="herohp">{"HP: " + herochp + " / " + hero.mhp}</div>
+          <div className="herohp">{"HP: " + this.props.shortScale(herochp) + " / " + this.props.shortScale(hero.mhp)}</div>
         </div>
         <div className="hpcontainer">
           <div className="heroxpbar" style={{ width: heroxppc + "%" }}></div>
           <div className="heroxp">
-            {"Lvl " + hero.level + " - " + "XP: " + hero.cxp + " / " + hero.mxp}
+            {"Lvl " + hero.level + " - " + "XP: " + this.props.shortScale(hero.cxp) + " / " + this.props.shortScale(hero.mxp)}
           </div>
         </div>
         <button
@@ -204,7 +204,7 @@ class Fight extends React.Component {
             style={{ width: monsterhppc + "%" }}
           ></div>
           <div className="monsterhp">
-            {"HP: " + monsterchp + " / " + monster.mhp}
+            {"HP: " + this.props.shortScale(monsterchp) + " / " + this.props.shortScale(monster.mhp)}
           </div>
         </div>
         <div className="monsterxp"></div>
@@ -401,8 +401,7 @@ class Fight extends React.Component {
         clearInterval(heroatk);
         clearInterval(monsteratk);
         this.props.monsterDrop(
-          this.state.monster.loot,
-          this.state.monster.name
+          this.state.monster
         );
         this.monsterdeath(this.state.monster.xp);
       } else {
@@ -541,7 +540,7 @@ function EquipTT(props) {
       <div key="5">Next Item:</div>
       <li key="6">{newitem.name}</li>
       <li key="7">{"Attack bonus: " + newitem.atk}</li>
-      <li key="8">{"HP bonus: " + +newitem.mhp}</li>
+      <li key="8">{"HP bonus: " + newitem.mhp}</li>
       <li key="9">
         {"Attack speed boost: " +
           ((1 / newitem.aspd) * 100 - 100).toFixed(0) +
@@ -551,7 +550,7 @@ function EquipTT(props) {
       <button key="10" onClick={props.upgrade}>
         {"Upgrade"}
         <br />
-        {"Cost: " + item.upcost[1] + " " + item.upcost[0]}
+        {"Cost: " + this.props.shortScale(item.upcost[1]) + " " + item.upcost[0]}
       </button>
       <button key="11" onClick={props.close}>
         Close menu

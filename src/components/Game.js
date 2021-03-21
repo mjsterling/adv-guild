@@ -207,6 +207,7 @@ class Game extends React.Component {
         buyUpgrade={this.buyUpgrade}
         logLevel={this.logLevel}
         tier={this.state.tier}
+        shortScale={this.shortScale}
       />
     );
   }
@@ -234,22 +235,50 @@ class Game extends React.Component {
     return <div className="inventorymenu">{inventoryList}</div>;
   }
 
+  shortScale(n) {
+    let number = n.toString(10);
+      if (number.length > 7) {
+      return (Math.round(n/1000000) + "M")
+      } else if (number.length === 7) {
+        return ((n/1000000).toFixed(1) + "M")
+      } else if (number.length > 4) {
+        return (Math.round(n/1000) + "K")
+      } else if (number.length === 4) {
+        return (n / 1000).toFixed(1)
+      } else {
+        return number;
+  }
+}
   //dynamic class iteratively called inside inventoryMenu() for loop
   renderInventory(i) {
-    return <Inventory key={i} contents={this.state.inventory[i]} />;
+    return <Inventory key={i} contents={this.state.inventory[i]} shortScale={this.shortScale()} />;
   }
   //calculate monster drop tables and update inventory totals. receives arg as array from Fight.fight()
-  monsterDrop(loot, monster) {
+  monsterDrop(monster) {
     let inventory = this.state.inventory;
     let log = this.state.log;
-    let dropid = Math.floor(Math.random() * loot.length);
-    let drop = loot[dropid].name;
-    let dropamount = Math.floor(Math.random() * loot[dropid].max) + 1;
+    let roll = monster.tier === 5 ? Math.floor(Math.random() * 100) : "";
+    if (monster.tier === 5 && roll < 90) {
+      log.push(
+        monster.name +
+          monsterDeathMsgs[
+            Math.floor(Math.random() * monsterDeathMsgs.length)
+          ] +
+          "Roll: " +
+          roll +
+          ". " +
+          "Loot: Nothing!"
+      );
+    }
+    let dropid = Math.floor(Math.random() * monster.loot.length);
+    let drop = monster.loot[dropid].name;
+    let dropamount = Math.floor(Math.random() * monster.loot[dropid].max) + 1;
     let stockpile = inventory.find((x) => x.name === drop).amount;
     stockpile += dropamount;
     log.push(
-      monster +
+      monster.name +
         monsterDeathMsgs[Math.floor(Math.random() * monsterDeathMsgs.length)] +
+        roll +
         " Loot: " +
         dropamount +
         " " +
@@ -265,6 +294,7 @@ class Game extends React.Component {
       log: log,
     });
   }
+
   logLevel(hero) {
     let log = this.state.log;
     log.push(hero.name + " is now level " + hero.level);
@@ -295,7 +325,7 @@ class Game extends React.Component {
 }
 //function class returns line items of Game.state.inventory pairs based on Game.inventoryMenu() for loop
 function Inventory(props) {
-  return <li>{props.contents.name + ": " + props.contents.amount}</li>;
+  return <li>{props.contents.name + ": " + props.shortScale(props.contents.amount)}</li>;
 }
 
 function LogItem(props) {
