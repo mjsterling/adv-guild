@@ -337,7 +337,10 @@ class Fight extends React.Component {
           {xmonsters}
           <br />
           <br />
-          <button onClick={() => this.setState({ monsterMenu: false })}>
+          <button onClick={() => this.setState({ monsterMenu: false },() => {
+            if (this.state.monster.atk) {
+              this.fight()
+              }})}>
             Close menu
           </button>
         </ul>
