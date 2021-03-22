@@ -70,6 +70,7 @@ class Game extends React.Component {
         { name: "Starforged Chestpiece", amount: 0 },
         { name: "Starforged Legpiece", amount: 0 },
         { name: "Starforged Boots", amount: 0 },
+        
         { name: "Max Tier!", amount: 0 },
         { name: "Mantle of the Universe", amount: 0 },
       ],
@@ -280,7 +281,7 @@ class Game extends React.Component {
   renderLog(i) {
     return <LogItem key={i} content={this.state.log[i]} />;
   }
-  //generate inventory items only if their amount > 0 and return JSX element
+
   inventoryMenu() {
     let inventoryList = Array(this.state.inventory.length);
     for (let i = 0; i < inventoryList.length; i++) {

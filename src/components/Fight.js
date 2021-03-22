@@ -12,7 +12,7 @@ const recoveringMsgs = [
   "Reattaching limbs... ",
   "Twiddling thumbs... ",
   "Performing open heart surgery... ",
-  "Doing a step class... "
+  "Doing a step class... ",
 ];
 
 class Fight extends React.Component {
@@ -180,12 +180,23 @@ class Fight extends React.Component {
         <div className="heroname">{hero.name}</div>
         <div className="hpcontainer">
           <div className="herohpbar" style={{ width: herohppc + "%" }}></div>
-          <div className="herohp">{"HP: " + this.props.shortScale(herochp) + " / " + this.props.shortScale(hero.mhp)}</div>
+          <div className="herohp">
+            {"HP: " +
+              this.props.shortScale(herochp) +
+              " / " +
+              this.props.shortScale(hero.mhp)}
+          </div>
         </div>
         <div className="hpcontainer">
           <div className="heroxpbar" style={{ width: heroxppc + "%" }}></div>
           <div className="heroxp">
-            {"Lvl " + hero.level + " - " + "XP: " + this.props.shortScale(hero.cxp) + " / " + this.props.shortScale(hero.mxp)}
+            {"Lvl " +
+              hero.level +
+              " - " +
+              "XP: " +
+              this.props.shortScale(hero.cxp) +
+              " / " +
+              this.props.shortScale(hero.mxp)}
           </div>
         </div>
         <button
@@ -204,7 +215,10 @@ class Fight extends React.Component {
             style={{ width: monsterhppc + "%" }}
           ></div>
           <div className="monsterhp">
-            {"HP: " + this.props.shortScale(monsterchp) + " / " + this.props.shortScale(monster.mhp)}
+            {"HP: " +
+              this.props.shortScale(monsterchp) +
+              " / " +
+              this.props.shortScale(monster.mhp)}
           </div>
         </div>
         <div className="monsterxp"></div>
@@ -303,6 +317,8 @@ class Fight extends React.Component {
 
   //Select Monster onclick
   monsterMenu() {
+    clearInterval(this.state.heroatk);
+    clearInterval(this.state.monsteratk);
     let tier = this.props.tier;
     //check each monster for its tier
     let count = 0;
@@ -359,9 +375,9 @@ class Fight extends React.Component {
     //level up
     if (heroc.cxp >= heroc.mxp) {
       while (heroc.cxp >= heroc.mxp) {
-      heroc.level++;
-      heroc.cxp -= heroc.mxp;
-      heroc.mxp = Math.floor(heroc.mxp + 40 * 1.2 ** (heroc.level - 1));
+        heroc.level++;
+        heroc.cxp -= heroc.mxp;
+        heroc.mxp = Math.floor(heroc.mxp + 40 * 1.2 ** (heroc.level - 1));
       }
       setTimeout(() => {
         this.setState(
@@ -402,9 +418,7 @@ class Fight extends React.Component {
         monsterc.chp = 0;
         clearInterval(this.state.heroatk);
         clearInterval(this.state.monsteratk);
-        this.props.monsterDrop(
-          this.state.monster
-        );
+        this.props.monsterDrop(this.state.monster);
         this.monsterdeath(this.state.monster.xp);
       } else {
         this.setState({
@@ -480,7 +494,10 @@ class Fight extends React.Component {
         </ul>
         <ol>
           <li>Current stats:</li>
-          <li>{"DPS: " + this.props.shortScale(Math.round(hero.atk / ( hero.aspd / 1000)))}</li>
+          <li>
+            {"DPS: " +
+              this.props.shortScale(Math.round(hero.atk / (hero.aspd / 1000)))}
+          </li>
           <li>{"Attack: " + this.props.shortScale(hero.atk) + " dmg"}</li>
           <li>{"Att Speed: " + (hero.aspd / 1000).toFixed(2) + "s"}</li>
           <li>{"HP Bonus: " + this.props.shortScale(hero.mhp - 100)}</li>
@@ -522,12 +539,15 @@ function EquipTT(props) {
       x.tier === props.itemtier &&
       x.class === props.name
   );
-  let newitem = props.itemtier < 9 ? items.find(
-    (x) =>
-      x.tier === props.itemtier + 1 &&
-      x.type === props.itemtype &&
-      x.class === props.name
-  ) : {name: "Max Tier!", tier: "N/A", atk: 1, mhp: 1, aspd: 1};
+  let newitem =
+    props.itemtier < 9
+      ? items.find(
+          (x) =>
+            x.tier === props.itemtier + 1 &&
+            x.type === props.itemtype &&
+            x.class === props.name
+        )
+      : { name: "Max Tier!", tier: "N/A", atk: 1, mhp: 1, aspd: 1 };
   return (
     <ul className="equipttbtns">
       <div key="0">Current Item:</div>
@@ -549,7 +569,6 @@ function EquipTT(props) {
           ((1 / newitem.aspd) * 100 - 100).toFixed(0) +
           "%"}
       </li>
-
       <button key="10" onClick={props.upgrade}>
         {"Upgrade"}
         <br />
